@@ -1,0 +1,46 @@
+.spec {
+  &__container {
+    display: flex;
+    gap: 7rem;
+  }
+
+  &__content {
+    max-width: 75.2rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5rem;
+  }
+  &__subtitle {
+    font-size: 2.4rem;
+    font-weight: 500;
+    &:not(:last-child) {
+      margin-bottom: 0;
+    }
+  }
+  &__btn {
+    margin-top: auto;
+    width: 100%;
+    max-width: 37rem;
+    font-weight: 400;
+  }
+
+  &__img {
+    flex-grow: 1;
+    position: relative;
+    mask-image: url("./../img/spec/spec-mask.svg");
+    mask-size: auto 100%;
+    mask-repeat: no-repeat;
+    mask-position: left;
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

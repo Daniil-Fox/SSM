@@ -1,0 +1,45 @@
+h1,
+.h1 {
+  margin: 0;
+  font-family: var(--second-family);
+  font-weight: 500;
+  font-size: 7.2rem;
+  line-height: 120%;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+h2,
+.h2 {
+  margin: 0;
+  font-family: var(--second-family);
+  font-weight: 566;
+  font-size: 5rem;
+  line-height: 110%;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+h3,
+.h3 {
+  margin: 0;
+  font-family: var(--second-family);
+  font-weight: 500;
+  font-size: 2.6rem;
+  line-height: 140%;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+p,
+.p {
+  margin: 0;
+  font-weight: 300;
+  font-size: 2.2rem;
+  line-height: 150%;
+  color: var(--black);
+
+  &:not(:last-child) {
+    margin-bottom: 1em;
+  }
+}

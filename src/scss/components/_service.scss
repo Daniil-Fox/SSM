@@ -1,0 +1,29 @@
+.service {
+  &__slider {
+    overflow: visible;
+  }
+
+  &__card {
+    &-img {
+      border-radius: 2rem;
+      overflow: hidden;
+      height: 44rem;
+
+      margin-bottom: 2rem;
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+
+      h3 {
+        padding-right: 1rem;
+      }
+    }
+  }
+}

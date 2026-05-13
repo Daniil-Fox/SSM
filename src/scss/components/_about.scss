@@ -1,0 +1,27 @@
+.about {
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 4rem;
+    padding: 3rem 0;
+  }
+  &__item {
+    background-color: #f7f7f7;
+    padding: 4.4rem;
+    border-radius: 2rem;
+    min-height: 37rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &-title {
+      color: var(--red);
+    }
+  }
+}

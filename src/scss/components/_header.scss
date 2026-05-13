@@ -1,0 +1,11 @@
+// ваш код
+.header {
+  padding: 3rem;
+  background-color: var(--white);
+  border-radius: 0 0 2rem 2rem;
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

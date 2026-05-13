@@ -1,0 +1,19 @@
+// если вы хотите использовать sass-переменные - удалите root
+// colors
+:root {
+  --font-family: "Noto Sans", sans-serif;
+  --second-family: "Bounded", sans-serif;
+  --content-width: 177rem;
+  --container-offset: 8rem;
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+
+  --red: #f30c1b;
+  --red-hover: #f53d49;
+  --black: #000;
+  --white: #fff;
+  --30black: #fff;
+  --grey1: #ededed;
+  --grey2: #d9d9d9;
+  --grey3: #b3b3b3;
+  --grey4: #8c8c8c;
+}

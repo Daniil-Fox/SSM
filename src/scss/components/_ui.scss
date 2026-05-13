@@ -1,0 +1,133 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 400;
+  font-size: 2.2rem;
+  line-height: 150%;
+  color: var(--white);
+  border: none;
+  padding: 1.8rem 2.4rem;
+  border-radius: 1rem;
+  background-color: var(--red);
+  cursor: pointer;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease-in;
+
+  &_medium {
+    font-weight: 500;
+    padding: 1.1rem 4rem 1.3rem;
+  }
+
+  &_tri {
+    font-family: var(--second-family);
+    position: relative;
+    border-radius: 0;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+
+    &::after,
+    &::before {
+      content: "";
+      width: 2.5rem;
+      height: 100%;
+      background-color: var(--red);
+      position: absolute;
+      top: 0;
+      mask-image: url("./../img/svg/btn-mask.svg");
+      mask-size: auto 100%;
+      mask-repeat: no-repeat;
+      mask-position: left bottom;
+      transition: background-color 0.3s ease-in;
+    }
+    &::before {
+      right: calc(100% - 2px);
+    }
+    &::after {
+      transform: rotateZ(180deg);
+      left: calc(100% - 2px);
+    }
+  }
+
+  @include hover {
+    background-color: var(--red-hover);
+    color: var(--white);
+
+    &::after,
+    &::before {
+      background-color: var(--red-hover);
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+    background-color: var(--red-hover);
+    color: var(--white);
+    &::after,
+    &::before {
+      background-color: var(--red-hover);
+    }
+  }
+  &:active {
+    color: var(--white);
+    background-color: var(--red);
+    &::after,
+    &::before {
+      background-color: var(--red);
+    }
+  }
+  &:disabled {
+    background-color: var(--grey2);
+    color: var(--grey3);
+  }
+
+  &_dark {
+    background-color: var(--grey1);
+    color: var(--black);
+    &::after,
+    &::before {
+      background-color: var(--grey1);
+    }
+    @include hover {
+      background-color: var(--black);
+      color: var(--white);
+
+      &::after,
+      &::before {
+        background-color: var(--black);
+      }
+    }
+    &:focus-visible {
+      outline: none;
+      background-color: var(--black);
+      color: var(--white);
+
+      &::after,
+      &::before {
+        background-color: var(--black);
+      }
+    }
+    &:active {
+      color: var(--white);
+      background-color: var(--red-hover);
+
+      &::after,
+      &::before {
+        background-color: var(--red-hover);
+      }
+    }
+  }
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+
+  &:not(:last-child) {
+    margin-bottom: 6rem;
+  }
+}

@@ -1,0 +1,32 @@
+.benefits {
+  &__title {
+    margin-bottom: 6rem;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+  }
+
+  &__card {
+    position: relative;
+    padding: 4.4rem;
+    padding-right: 10.5rem;
+    background-color: #f7f7f7;
+    border-radius: 2rem;
+  }
+  &__card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 3rem;
+    margin-bottom: 2.5rem;
+  }
+  &__card-header span {
+    position: absolute;
+    right: 4.4rem;
+    bottom: 4.4rem;
+    color: var(--red);
+  }
+}
