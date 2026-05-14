@@ -1,18 +1,19 @@
-.service {
+.format {
   overflow: hidden;
+  &__title {
+    margin-bottom: 6rem;
+  }
+
   &__slider {
     overflow: visible;
-  }
-  &__btn {
-    width: 100%;
-    max-width: 37rem;
   }
 
   &__card {
     &-img {
       border-radius: 2rem;
       overflow: hidden;
-      height: 44rem;
+      height: 34.4rem;
+
       img {
         display: block;
         width: 100%;
@@ -21,13 +22,9 @@
     }
     &-content {
       padding-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.6rem;
-
-      h3 {
-        padding-right: 1rem;
-      }
+    }
+    &-title {
+      margin-bottom: 2.4rem;
     }
   }
 }

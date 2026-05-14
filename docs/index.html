@@ -155,11 +155,11 @@
   </div>
 </section>
 
-        <section class="services">
+        <section class="service">
   <div class="container">
-    <div class="services__header heading">
+    <div class="service__header heading">
       <h2 class="heading__title">Наши основные услуги</h2>
-      <button class="btn btn_dark btn_tri">все&nbsp;услуги</button>
+      <button class="btn btn_dark btn_tri service__btn">все&nbsp;услуги</button>
     </div>
     <div class="service__slider swiper">
       <div class="swiper-wrapper">
@@ -167,10 +167,14 @@
           <article class="service__card">
             <div class="service__card-img">
               <picture>
-                <source srcset="./img/service/01.webp" type="image/webp" />
+                <source
+                  srcset="./img/service/01.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
                 <img
                   loading="lazy"
-                  src="./img/service/01.jpg"
+                  src="./img/service/01.webp"
                   class="image"
                   width=""
                   height=""
@@ -191,10 +195,14 @@
           <article class="service__card">
             <div class="service__card-img">
               <picture>
-                <source srcset="./img/service/02.webp" type="image/webp" />
+                <source
+                  srcset="./img/service/02-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
                 <img
                   loading="lazy"
-                  src="./img/service/02.jpg"
+                  src="./img/service/02.webp"
                   class="image"
                   width=""
                   height=""
@@ -216,10 +224,14 @@
           <article class="service__card">
             <div class="service__card-img">
               <picture>
-                <source srcset="./img/service/03.webp" type="image/webp" />
+                <source
+                  srcset="./img/service/03-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
                 <img
                   loading="lazy"
-                  src="./img/service/03.jpg"
+                  src="./img/service/03.webp"
                   class="image"
                   width=""
                   height=""
@@ -240,10 +252,14 @@
           <article class="service__card">
             <div class="service__card-img">
               <picture>
-                <source srcset="./img/service/04.webp" type="image/webp" />
+                <source
+                  srcset="./img/service/04-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
                 <img
                   loading="lazy"
-                  src="./img/service/04.jpg"
+                  src="./img/service/04.webp"
                   class="image"
                   width=""
                   height=""
@@ -438,9 +454,529 @@
   </div>
 </section>
 
+        <section class="format">
+  <div class="container">
+    <h2 class="format__title">Форматы сотрудничества</h2>
+
+    <div class="format__slider swiper slider-3">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <article class="format__card card">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/format/01-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/format/01.webp"
+                  class="image"
+                  width=""
+                  height=""
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title">
+                Работа по&nbsp;техническому заданию заказчика
+              </h3>
+              <p>
+                Реализуем проекты на&nbsp;основе технического задания заказчика.
+                Учитываем технологические процессы, инженерные нагрузки,
+                требования промышленной безопасности и&nbsp;особенности
+                эксплуатации объекта.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="format__card card">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/format/02-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/format/02.webp"
+                  class="image"
+                  width=""
+                  height=""
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title">Комплексная реализация проектов</h3>
+              <p>
+                Полный комплекс работ в&nbsp;одном договоре: подготовка
+                строительной площадки, возведение зданий и&nbsp;сооружений,
+                монтаж инженерных систем и&nbsp;технологического оборудования,
+                пусконаладка, ввод объекта в&nbsp;эксплуатацию.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="format__card card">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/format/03-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/format/03.webp"
+                  class="image"
+                  width=""
+                  height=""
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title">
+                Работа с&nbsp;материалами и&nbsp;оборудованием заказчика
+              </h3>
+              <p>
+                Выполняем монтажные и&nbsp;строительные работы
+                с&nbsp;использованием материалов и&nbsp;оборудования,
+                предоставленных заказчиком. Соблюдаем технические регламенты
+                и&nbsp;предоставляем гарантию на&nbsp;выполненные работы.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ <section class="trust">
+  <div class="container">
+    <h2 class="trust__title">нам&nbsp;доверяют</h2>
+    <div class="trust__slider swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="trust__card">
+            <img src="./img/trust/ozon.svg" width="293" height="64" alt="" />
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="trust__card">
+            <img src="./img/trust/wb.svg" width="456" height="70" alt="" />
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="trust__card">
+            <img src="./img/trust/hoff.svg" width="141" height="70" alt="" />
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="trust__card">
+            <img src="./img/trust/dns.svg" width="210" height="52" alt="" />
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="trust__card">
+            <img src="./img/trust/five.svg" width="141" height="94" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <section class="projects">
+  <div class="container">
+    <div class="projects__header heading">
+      <h2 class="projects__title">реализованные проекты</h2>
+      <button class="btn btn_dark btn_tri projects__btn">все проекты</button>
+    </div>
+
+    <div class="projects__slider swiper slider-3">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <article class="projects__card card">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/projects/01-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/projects/01.webp"
+                  class="image"
+                  width="560"
+                  height="400"
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title"><a href="#">Efes</a></h3>
+              <p>
+                Тёплый склад с&nbsp;паллетным хранением, адаптирован
+                под&nbsp;логистику и&nbsp;температурный режим
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="projects__card card">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/projects/02-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/projects/02.webp"
+                  class="image"
+                  width="560"
+                  height="400"
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title"><a href="#">Примтеплоэнерго</a></h3>
+              <p>
+                Инфраструктурный объект, сложные инженерные решения в сжатые
+                сроки
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="projects__card card">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/projects/03-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/projects/03.webp"
+                  class="image"
+                  width="560"
+                  height="400"
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title"><a href="#">DelCar</a></h3>
+              <p>Складской комплекс под&nbsp;задачи ритейлера</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ <section class="news">
+  <div class="container">
+    <div class="news__header heading">
+      <h2 class="news__title">новости</h2>
+      <a href="#" class="btn btn_dark btn_tri news__btn">все новости</a>
+    </div>
+
+    <div class="news__slider swiper slider-3">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <article class="news__card card card_news">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/news/01-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/news/01.webp"
+                  class="image"
+                  width="560"
+                  height="400"
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title">
+                <a href="#"
+                  >Завершено строительство складского комплекса по&nbsp;схеме
+                  Build-to-Suit</a
+                >
+              </h3>
+              <p>
+                Сдан объект, спроектированный под&nbsp;индивидуальные задачи
+                заказчика: температурный режим, доковые зоны, нагрузки
+                на&nbsp;полы.
+              </p>
+              <time datetime="03/26/2026">26.03.2026</time>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="news__card card card_news">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/news/02-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/news/02.webp"
+                  class="image"
+                  width="560"
+                  height="400"
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title">
+                <a href="#">Выполнен монтаж технологического оборудования</a>
+              </h3>
+              <p>
+                Завершены монтажные и&nbsp;пусконаладочные работы
+                на&nbsp;производственной площадке заказчика.
+              </p>
+              <time datetime="20.03.2026">20.03.2026</time>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="news__card card card_news">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/news/03-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/news/03.webp"
+                  class="image"
+                  width="560"
+                  height="400"
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title">
+                <a href="#"
+                  >Расширены мощности собственного цеха металлоконструкций</a
+                >
+              </h3>
+              <p>
+                Увеличены производственные мощности по&nbsp;изготовлению
+                металлоконструкций нестандартных форм.
+              </p>
+              <time datetime="17.03.2026">17.03.2026</time>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <section class="cta">
+  <div class="container container_no-pr">
+    <div class="cta__container">
+      <div class="cta__content">
+        <h2 class="cta__title">оставьте заявку</h2>
+        <p class="cta__subtitle">
+          Наш специалист свяжется с&nbsp;вами в&nbsp;течение рабочего дня
+        </p>
+        <p class="cta__text">
+          Расскажите про&nbsp;объект&nbsp;— мы&nbsp;предварительно оценим
+          стоимость и&nbsp;сроки, согласуем выезд инженера на&nbsp;площадку
+          и&nbsp;предоставим техническое предложение.
+        </p>
+
+        <form action="#" class="cta__form form">
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper">
+              <input
+                type="text"
+                class="form__input input-name"
+                name="Имя"
+                required
+              />
+              <div class="form__label">имя</div>
+            </label>
+          </div>
+
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper">
+              <input
+                type="text"
+                class="form__input input-tel-email"
+                name="телефон или email"
+                required
+              />
+              <div class="form__label">телефон или email</div>
+            </label>
+          </div>
+
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper">
+              <input
+                type="text"
+                class="form__input input-city"
+                name="город"
+                required
+              />
+              <div class="form__label">город</div>
+            </label>
+          </div>
+
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper form__field-wrapper--area">
+              <textarea
+                class="form__input form__input--area input-mess"
+                name="Сообщение"
+              ></textarea>
+              <div class="form__label">
+                краткое описание задачи (необязательно)
+              </div>
+            </label>
+          </div>
+          <button class="btn btn-reset btn--accent form__btn" disabled>
+            отправить заявку
+          </button>
+          <p class="form__extra">
+            Отправляя заявку, вы соглашаетесь с&nbsp;<a href="#" target="_blank"
+              >политикой обработки персональных данных</a
+            >.
+          </p>
+        </form>
+      </div>
+      <div class="cta__img">
+        <picture>
+          <source srcset="./img/cta.webp" type="image/webp" />
+          <img
+            loading="lazy"
+            src="./img/cta.webp"
+            class="image"
+            width="1300"
+            height="800"
+            alt=""
+          />
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
       </main>
       <footer class="footer">
-  <div class="container"></div>
+  <div class="container">
+    <div class="footer__container">
+      <address class="footer__col">
+        <div>
+          <p class="footer__item">
+            <a href="mailto:specstroymon@yandex.ru">specstroymon@yandex.ru</a>
+          </p>
+          <p class="footer__item">
+            <a href="tel:+7 951 022 09 99">+79510220999</a>
+          </p>
+          <p class="footer__item">Часы работы: пн–пт, 9:00–18:00</p>
+        </div>
+        <div class="footer-gray">
+          <p>
+            690080, Приморский край, г.&nbsp;Владивосток,
+            ул.&nbsp;Добровольского, д.&nbsp;5, помещение&nbsp;5
+          </p>
+        </div>
+      </address>
+
+      <nav class="footer__col">
+        <ul>
+          <li>
+            <a href="#">Подать заявку</a>
+          </li>
+          <li>
+            <a href="#">Получить расчёт</a>
+          </li>
+          <li>
+            <a href="#">Согласовать выезд инженера</a>
+          </li>
+          <li>
+            <a href="#">Запросить смету</a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col footer__col_nav">
+        <ul>
+          <li>
+            <a href="#">Главная</a>
+          </li>
+          <li>
+            <a href="#">Услуги</a>
+          </li>
+          <li>
+            <a href="#">О компании</a>
+          </li>
+          <li>
+            <a href="#">Проекты</a>
+          </li>
+          <li>
+            <a href="#">Новости</a>
+          </li>
+          <li>
+            <a href="#">Контакты</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="footer__col footer-gray">
+        <div>
+          <p class="footer__item">
+            <a href="#" target="_blank">Политика конфиденциальности</a>
+          </p>
+          <p class="footer__item">
+            <p target="_blank">© 2026 ООО «СпецСтройМонтаж».</p>
+          </p>
+        </div>
+
+        <div>
+          <a href="https://peremena.store" target="_blank">Создано Переменой</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 
     </div>

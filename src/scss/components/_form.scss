@@ -1,0 +1,149 @@
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  --gap: -0.5rem;
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+  }
+  &__field {
+    display: block;
+    width: 100%;
+    position: relative;
+
+    &--long {
+      grid-column: 2 span;
+    }
+
+    @include hover {
+      input:not(:disabled) ~ .form__label {
+        color: rgba(0, 0, 0, 0.45);
+      }
+      textarea:not(:disabled) ~ .form__label {
+        color: rgba(0, 0, 0, 0.45);
+      }
+    }
+
+    &-wrapper {
+      display: block;
+      height: 6rem;
+      position: relative;
+      border-radius: 2rem;
+      outline: 2px solid transparent;
+      padding: 1.5rem 3rem;
+      background-color: #f7fafa;
+      // outline-offset: -2px;
+      font-weight: 300;
+      font-size: 2rem;
+      line-height: 150%;
+      text-transform: lowercase;
+      overflow: hidden;
+      transition:
+        color 0.3s ease-out,
+        background-color 0.3s ease-out,
+        outline-color 0.3s ease-in;
+      &--area {
+        height: 14rem;
+      }
+    }
+
+    &.filled {
+      .form__label {
+        font-size: 1.4rem;
+        transform: translateY(var(--gap));
+      }
+      .form__input {
+        transform: translateY(-32%);
+
+        &--area {
+          transform: none;
+        }
+      }
+    }
+    &.focus {
+      .form__field-wrapper {
+        outline-color: #000;
+        background-color: #fff;
+      }
+      .form__label {
+        background-color: #fff;
+      }
+    }
+  }
+
+  &__label {
+    position: absolute;
+    z-index: 4;
+    background-color: #f7fafa;
+    width: 100%;
+    top: 0;
+    padding-top: 1.4rem;
+    left: 3rem;
+    font-weight: 300;
+    font-size: 2rem;
+    line-height: 150%;
+    text-transform: lowercase;
+    color: rgba(0, 0, 0, 0.25);
+    transition: color 0.3s ease-out;
+    // background: #f7fafa;
+    transition:
+      transform 0.3s ease-in,
+      font-size 0.3s ease-in,
+      background-color 0.3s ease-in;
+  }
+
+  &__input {
+    display: block;
+    position: absolute;
+    padding: 1.5rem 3rem;
+    height: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    border: none;
+    background: none;
+    transition:
+      transform 0.3s ease-in,
+      background-color 0.3s ease-in;
+    &:focus {
+      outline: none;
+      transform: translateY(-32%);
+
+      & ~ .form__label {
+        font-size: 1.4rem;
+        transform: translateY(var(--gap));
+      }
+    }
+    &:disabled {
+      cursor: not-allowed;
+      touch-action: none;
+      background-color: #e3e6e6;
+    }
+    &--area {
+      height: 100%;
+      resize: none;
+      top: 0;
+      transform: none;
+      padding-top: 3rem;
+      &:focus {
+        transform: none;
+      }
+    }
+  }
+
+  &__btn {
+    margin-top: 2rem;
+    display: flex;
+    width: 100%;
+    grid-column: 2 span;
+    padding: 1.5rem 3rem 1.6rem;
+  }
+
+  &__extra {
+    font-size: 1.8rem;
+    width: 100%;
+    grid-column: 2 span;
+  }
+}

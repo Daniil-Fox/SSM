@@ -1,0 +1,24 @@
+.trust {
+  overflow: hidden;
+  &__title {
+    margin-bottom: 6rem;
+  }
+  &__slider {
+    overflow: visible;
+
+    .swiper-slide {
+      width: auto;
+    }
+  }
+  &__card {
+    height: 7.5rem;
+    // display: flex;
+    // justify-content: center;
+    img {
+      display: block;
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+  }
+}

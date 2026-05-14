@@ -43,3 +43,23 @@ p,
     margin-bottom: 1em;
   }
 }
+
+a {
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: var(--black);
+
+  transition: color 0.3s ease-in;
+
+  @include hover {
+    color: var(--red);
+  }
+  &:focus-visible {
+    outline: none;
+    color: var(--red);
+  }
+  &:active {
+    color: var(--red);
+  }
+}

@@ -1,0 +1,41 @@
+.cta {
+  &__container {
+    display: flex;
+    gap: 6rem;
+  }
+  &__title {
+    margin-bottom: 4rem;
+  }
+  &__subtitle {
+    font-weight: 500;
+    font-size: 2.4rem;
+    &:not(:last-child) {
+      margin-bottom: 4rem;
+    }
+  }
+  &__text {
+    &:not(:last-child) {
+      margin-bottom: 4rem;
+    }
+  }
+  &__content {
+    width: 100%;
+    max-width: 74rem;
+  }
+  &__img {
+    position: relative;
+    flex-grow: 1;
+
+    mask-image: url("./../img/spec/spec-mask.svg");
+    mask-size: auto 100%;
+    mask-repeat: no-repeat;
+    mask-position: left;
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

@@ -25,8 +25,41 @@ __webpack_require__.r(__webpack_exports__);
 
 new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(".service__slider", {
   slidesPerView: 4,
-  spaceBetween: 40
+  spaceBetween: 40,
+  breakpoints: {
+    320: {
+      slidesPerView: 1.2
+    },
+    577: {
+      slidesPerView: 4
+    }
+  }
 });
+new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(".trust__slider", {
+  slidesPerView: "auto",
+  spaceBetween: 70,
+  breakpoints: {
+    320: {},
+    577: {}
+  }
+});
+const sliders3 = document.querySelectorAll(".slider-3");
+if (sliders3.length) {
+  sliders3.forEach(slider => {
+    new swiper__WEBPACK_IMPORTED_MODULE_0__.Swiper(slider, {
+      slidesPerView: 3,
+      spaceBetween: 40,
+      breakpoints: {
+        320: {
+          slidesPerView: 1.2
+        },
+        577: {
+          slidesPerView: 3
+        }
+      }
+    });
+  });
+}
 
 /***/ },
 
