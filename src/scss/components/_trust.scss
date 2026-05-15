@@ -2,6 +2,9 @@
   overflow: hidden;
   &__title {
     margin-bottom: 6rem;
+    @include mobile {
+      margin-bottom: 5rem;
+    }
   }
   &__slider {
     overflow: visible;
@@ -12,8 +15,9 @@
   }
   &__card {
     height: 7.5rem;
-    // display: flex;
-    // justify-content: center;
+    @include mobile {
+      height: 5.5rem;
+    }
     img {
       display: block;
       height: 100%;

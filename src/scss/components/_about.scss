@@ -3,6 +3,10 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 4rem;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
   }
   &__content {
     display: flex;
@@ -10,6 +14,9 @@
     justify-content: flex-end;
     gap: 4rem;
     padding: 3rem 0;
+    @include mobile {
+      padding: 0;
+    }
   }
   &__item {
     background-color: #f7f7f7;
@@ -20,8 +27,16 @@
     flex-direction: column;
     justify-content: space-between;
 
+    @include mobile {
+      min-height: 16rem;
+    }
+
     &-title {
       color: var(--red);
+      font-weight: 500;
+      @include mobile {
+        font-size: 2.6rem;
+      }
     }
   }
 }

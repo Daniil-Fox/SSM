@@ -3,5 +3,27 @@
     flex-shrink: 0;
     width: 100%;
     max-width: 37rem;
+
+    @include mobile {
+      max-width: calc(100% - 5rem);
+    }
+  }
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 7rem;
+      margin-bottom: 5rem;
+    }
+  }
+  &__card {
+    .card__img {
+      height: 28rem;
+    }
+    .card__title {
+      margin-bottom: 1rem;
+    }
   }
 }

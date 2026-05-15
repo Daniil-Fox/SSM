@@ -112,13 +112,20 @@ a {
 .page--ios .dis-scroll {
   position: relative;
 }
-section:first-child {
-  padding: inherit;
-  margin-bottom: 10rem;
-}
+
 section.hero {
   padding: 5rem 0 12rem;
+
+  margin-bottom: 10rem;
+
+  @include mobile {
+    padding: 20vh 0 3rem;
+    margin-bottom: 7.5rem;
+  }
 }
 section {
   padding: 10rem 0;
+  @include mobile {
+    padding: 7.5rem 0;
+  }
 }

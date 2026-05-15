@@ -3,5 +3,15 @@
     flex-shrink: 0;
     width: 100%;
     max-width: 37rem;
+
+    @include mobile {
+      max-width: calc(100% - 5rem);
+    }
+  }
+
+  &__slider {
+    @include mobile {
+      margin-bottom: 5rem;
+    }
   }
 }

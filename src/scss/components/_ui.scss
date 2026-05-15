@@ -120,7 +120,17 @@
     }
   }
 }
-
+.btn-nomob {
+  @include mobile {
+    display: none;
+  }
+}
+.btn-mob {
+  display: none;
+  @include mobile {
+    display: flex;
+  }
+}
 .heading {
   display: flex;
   align-items: center;
@@ -129,6 +139,9 @@
 
   &:not(:last-child) {
     margin-bottom: 6rem;
+    @include mobile {
+      margin-bottom: 5rem;
+    }
   }
 }
 
@@ -149,7 +162,7 @@
   }
 
   &__title {
-    margin-bottom: 2rem;
+    margin-bottom: 1.6rem;
 
     a {
       color: inherit;
@@ -174,6 +187,9 @@
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 2.4rem;
+  }
+  &_news &__img {
+    height: 28rem;
   }
 
   time {

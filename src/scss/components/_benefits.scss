@@ -7,6 +7,11 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 4rem;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
   }
 
   &__card {
@@ -15,6 +20,9 @@
     padding-right: 10.5rem;
     background-color: #f7f7f7;
     border-radius: 2rem;
+    @include mobile {
+      padding-right: 4.4rem;
+    }
   }
   &__card-header {
     display: flex;
@@ -28,5 +36,14 @@
     right: 4.4rem;
     bottom: 4.4rem;
     color: var(--red);
+
+    @include mobile {
+      position: static;
+    }
+  }
+  &__card-header h3 {
+    @include mobile {
+      font-size: 2.2rem;
+    }
   }
 }

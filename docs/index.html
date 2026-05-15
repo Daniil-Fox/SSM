@@ -67,7 +67,14 @@
   <div class="container">
     <div class="header__container">
       <a href="/" class="header__logo">
-        <img src="./img/svg/logo.svg" width="147" height="28" alt="" />
+        <picture>
+          <source
+            srcset="./img/svg/logo-mob.svg"
+            type="image/webp"
+            media="(max-width: 576px)"
+          />
+          <img src="./img/svg/logo.svg" width="147" height="28" alt="" />
+        </picture>
       </a>
 
       <nav class="nav header__nav">
@@ -91,6 +98,15 @@
       </nav>
 
       <button class="btn btn_medium header__btn">консультация</button>
+
+      <button
+        class="btn-reset burger header__burger"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        data-burger
+      >
+        <span class="burger__line"></span>
+      </button>
     </div>
   </div>
 </header>
@@ -159,7 +175,9 @@
   <div class="container">
     <div class="service__header heading">
       <h2 class="heading__title">Наши основные услуги</h2>
-      <button class="btn btn_dark btn_tri service__btn">все&nbsp;услуги</button>
+      <a href="#" class="btn btn_dark btn_tri service__btn btn-nomob">
+        все&nbsp;услуги
+      </a>
     </div>
     <div class="service__slider swiper">
       <div class="swiper-wrapper">
@@ -278,13 +296,20 @@
         </div>
       </div>
     </div>
+    <a href="#" class="btn btn_dark btn_tri service__btn btn-mob">
+      все&nbsp;услуги
+    </a>
   </div>
 </section>
 
         <section class="banner">
   <div class="banner__img">
     <picture>
-      <source srcset="./img/banners/01.webp" type="image/webp" />
+      <source
+        srcset="./img/banners/01-mob.webp"
+        type="image/webp"
+        media="(max-width: 576px)"
+      />
       <img
         src="./img/banners/01.webp"
         class="image"
@@ -387,6 +412,7 @@
  <section class="spec">
   <div class="container container_no-pr">
     <div class="spec__container">
+      <div class="spec__title spec__title_mob h2">спецстроймонтаж</div>
       <div class="spec__content">
         <h2 class="spec__title">спецстроймонтаж</h2>
         <p class="spec__subtitle">Работаем с&nbsp;2005&nbsp;года</p>
@@ -399,8 +425,7 @@
             и&nbsp;особенности эксплуатации объектов. Решения подходят
             для&nbsp;ритейла, e-commerce, логистических компаний,
             машиностроительных, пищевых и&nbsp;энергетических производств.
-          </p>
-          <p>
+            <br /><br />
             Команда обеспечивает полный цикл работ&nbsp;— от&nbsp;проектирования
             и&nbsp;подготовки площадки до&nbsp;строительства, монтажа
             оборудования и&nbsp;ввода объекта в&nbsp;эксплуатацию. Применяем
@@ -433,7 +458,11 @@
         <section class="banner banner_wider">
   <div class="banner__img">
     <picture>
-      <source srcset="./img/banners/02.webp" type="image/webp" />
+      <source
+        srcset="./img/banners/02-mob.webp"
+        type="image/webp"
+        media="(max-width: 576px)"
+      />
       <img
         src="./img/banners/02.webp"
         class="image"
@@ -603,103 +632,101 @@
   <div class="container">
     <div class="projects__header heading">
       <h2 class="projects__title">реализованные проекты</h2>
-      <button class="btn btn_dark btn_tri projects__btn">все проекты</button>
+      <a href="#" class="btn btn_dark btn_tri projects__btn btn-nomob"
+        >все проекты</a
+      >
     </div>
 
-    <div class="projects__slider swiper slider-3">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <article class="projects__card card">
-            <div class="card__img">
-              <picture>
-                <source
-                  srcset="./img/projects/01-mob.webp"
-                  type="image/webp"
-                  media="(max-width: 576px)"
-                />
-                <img
-                  loading="lazy"
-                  src="./img/projects/01.webp"
-                  class="image"
-                  width="560"
-                  height="400"
-                  alt=""
-                />
-              </picture>
-            </div>
-            <div class="card__content">
-              <h3 class="card__title"><a href="#">Efes</a></h3>
-              <p>
-                Тёплый склад с&nbsp;паллетным хранением, адаптирован
-                под&nbsp;логистику и&nbsp;температурный режим
-              </p>
-            </div>
-          </article>
+    <div class="projects__grid">
+      <article class="projects__card card">
+        <div class="card__img">
+          <picture>
+            <source
+              srcset="./img/projects/01-mob.webp"
+              type="image/webp"
+              media="(max-width: 576px)"
+            />
+            <img
+              loading="lazy"
+              src="./img/projects/01.webp"
+              class="image"
+              width="560"
+              height="400"
+              alt=""
+            />
+          </picture>
         </div>
+        <div class="card__content">
+          <h3 class="card__title"><a href="#">Efes</a></h3>
+          <p>
+            Тёплый склад с&nbsp;паллетным хранением, адаптирован
+            под&nbsp;логистику и&nbsp;температурный режим
+          </p>
+        </div>
+      </article>
 
-        <div class="swiper-slide">
-          <article class="projects__card card">
-            <div class="card__img">
-              <picture>
-                <source
-                  srcset="./img/projects/02-mob.webp"
-                  type="image/webp"
-                  media="(max-width: 576px)"
-                />
-                <img
-                  loading="lazy"
-                  src="./img/projects/02.webp"
-                  class="image"
-                  width="560"
-                  height="400"
-                  alt=""
-                />
-              </picture>
-            </div>
-            <div class="card__content">
-              <h3 class="card__title"><a href="#">Примтеплоэнерго</a></h3>
-              <p>
-                Инфраструктурный объект, сложные инженерные решения в сжатые
-                сроки
-              </p>
-            </div>
-          </article>
+      <article class="projects__card card">
+        <div class="card__img">
+          <picture>
+            <source
+              srcset="./img/projects/02-mob.webp"
+              type="image/webp"
+              media="(max-width: 576px)"
+            />
+            <img
+              loading="lazy"
+              src="./img/projects/02.webp"
+              class="image"
+              width="560"
+              height="400"
+              alt=""
+            />
+          </picture>
         </div>
+        <div class="card__content">
+          <h3 class="card__title"><a href="#">Примтеплоэнерго</a></h3>
+          <p>
+            Инфраструктурный объект, сложные инженерные решения в сжатые сроки
+          </p>
+        </div>
+      </article>
 
-        <div class="swiper-slide">
-          <article class="projects__card card">
-            <div class="card__img">
-              <picture>
-                <source
-                  srcset="./img/projects/03-mob.webp"
-                  type="image/webp"
-                  media="(max-width: 576px)"
-                />
-                <img
-                  loading="lazy"
-                  src="./img/projects/03.webp"
-                  class="image"
-                  width="560"
-                  height="400"
-                  alt=""
-                />
-              </picture>
-            </div>
-            <div class="card__content">
-              <h3 class="card__title"><a href="#">DelCar</a></h3>
-              <p>Складской комплекс под&nbsp;задачи ритейлера</p>
-            </div>
-          </article>
+      <article class="projects__card card">
+        <div class="card__img">
+          <picture>
+            <source
+              srcset="./img/projects/03-mob.webp"
+              type="image/webp"
+              media="(max-width: 576px)"
+            />
+            <img
+              loading="lazy"
+              src="./img/projects/03.webp"
+              class="image"
+              width="560"
+              height="400"
+              alt=""
+            />
+          </picture>
         </div>
-      </div>
+        <div class="card__content">
+          <h3 class="card__title"><a href="#">DelCar</a></h3>
+          <p>Складской комплекс под&nbsp;задачи ритейлера</p>
+        </div>
+      </article>
     </div>
+    <a href="#" class="btn btn_dark btn_tri projects__btn btn-mob"
+      >все проекты</a
+    >
   </div>
 </section>
  <section class="news">
   <div class="container">
     <div class="news__header heading">
       <h2 class="news__title">новости</h2>
-      <a href="#" class="btn btn_dark btn_tri news__btn">все новости</a>
+      <a href="#" class="btn btn_dark btn_tri news__btn btn-nomob"
+        >все новости</a
+      >
     </div>
 
     <div class="news__slider swiper slider-3">
@@ -807,6 +834,7 @@
         </div>
       </div>
     </div>
+    <a href="#" class="btn btn_dark btn_tri news__btn btn-mob">все новости</a>
   </div>
 </section>
 
@@ -851,12 +879,7 @@
 
           <div class="form__field form__field--long">
             <label class="form__field-wrapper">
-              <input
-                type="text"
-                class="form__input input-city"
-                name="город"
-                required
-              />
+              <input type="text" class="form__input input-city" name="город" />
               <div class="form__label">город</div>
             </label>
           </div>
@@ -884,7 +907,11 @@
       </div>
       <div class="cta__img">
         <picture>
-          <source srcset="./img/cta.webp" type="image/webp" />
+          <source
+            srcset="./img/cta-mob.webp"
+            type="image/webp"
+            media="(max-width: 576px)"
+          />
           <img
             loading="lazy"
             src="./img/cta.webp"

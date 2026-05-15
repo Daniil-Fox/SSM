@@ -2,7 +2,14 @@
   <div class="container">
     <div class="header__container">
       <a href="/" class="header__logo">
-        <img src="./img/svg/logo.svg" width="147" height="28" alt="" />
+        <picture>
+          <source
+            srcset="./img/svg/logo-mob.svg"
+            type="image/webp"
+            media="(max-width: 576px)"
+          />
+          <img src="./img/svg/logo.svg" width="147" height="28" alt="" />
+        </picture>
       </a>
 
       <nav class="nav header__nav">
@@ -26,6 +33,15 @@
       </nav>
 
       <button class="btn btn_medium header__btn">консультация</button>
+
+      <button
+        class="btn-reset burger header__burger"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        data-burger
+      >
+        <span class="burger__line"></span>
+      </button>
     </div>
   </div>
 </header>

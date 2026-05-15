@@ -39,12 +39,7 @@
 
           <div class="form__field form__field--long">
             <label class="form__field-wrapper">
-              <input
-                type="text"
-                class="form__input input-city"
-                name="город"
-                required
-              />
+              <input type="text" class="form__input input-city" name="город" />
               <div class="form__label">город</div>
             </label>
           </div>
@@ -72,7 +67,11 @@
       </div>
       <div class="cta__img">
         <picture>
-          <source srcset="./img/cta.webp" type="image/webp" />
+          <source
+            srcset="./img/cta-mob.webp"
+            type="image/webp"
+            media="(max-width: 576px)"
+          />
           <img
             loading="lazy"
             src="./img/cta.webp"

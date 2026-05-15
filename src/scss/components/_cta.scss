@@ -1,21 +1,38 @@
 .cta {
+  .container {
+    @include mobile {
+      padding-right: var(--container-offset);
+    }
+  }
   &__container {
     display: flex;
     gap: 6rem;
+    @include mobile {
+      flex-direction: column-reverse;
+    }
   }
   &__title {
     margin-bottom: 4rem;
+    @include mobile {
+      margin-bottom: 2.5rem;
+    }
   }
   &__subtitle {
     font-weight: 500;
     font-size: 2.4rem;
     &:not(:last-child) {
       margin-bottom: 4rem;
+      @include mobile {
+        margin-bottom: 2.5rem;
+      }
     }
   }
   &__text {
     &:not(:last-child) {
       margin-bottom: 4rem;
+      @include mobile {
+        margin-bottom: 4.5rem;
+      }
     }
   }
   &__content {
@@ -30,6 +47,11 @@
     mask-size: auto 100%;
     mask-repeat: no-repeat;
     mask-position: left;
+    @include mobile {
+      height: 13rem;
+      mask-image: url("./../img/svg/news-mask-mob.svg");
+      mask-size: 100% 100%;
+    }
     img {
       position: absolute;
       left: 0;
