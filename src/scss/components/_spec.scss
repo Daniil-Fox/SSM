@@ -35,7 +35,6 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    justify-content: space-between;
     gap: 5rem;
 
     @include mobile {
@@ -103,7 +102,9 @@
     mask-size: auto 100%;
     mask-repeat: no-repeat;
     mask-position: left;
+    min-height: 73.7rem;
     @include mobile {
+      min-height: unset;
       height: 39rem;
       margin-right: calc(-1 * var(--container-offset));
     }

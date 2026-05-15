@@ -1,0 +1,24 @@
+.suit {
+  overflow: hidden;
+  &__card .card__img {
+    height: 26rem;
+
+    @include mobile {
+      height: 44rem;
+    }
+  }
+  &__slider {
+    overflow: visible;
+    @include mobile {
+      margin-bottom: 5rem;
+    }
+  }
+  &__btn {
+    width: 100%;
+    max-width: 37.2rem;
+
+    @include mobile {
+      max-width: calc(100% - 5rem);
+    }
+  }
+}

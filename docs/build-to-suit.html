@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="ru" class="page">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="theme-color" content="#111111" />
+  <title>ССМ</title>
+  <link
+    rel="preload"
+    href="fonts/Bounded-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/Bounded-Medium.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/Bounded-SemiBold.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/NotoSans-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/NotoSans-Light.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/NotoSans-Medium.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/NotoSans-SemiBold.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link rel="stylesheet" href="css/vendor.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <script defer src="js/main.js"></script>
+</head>
+
+
+  <body class="page__body">
+    <div class="site-container">
+      <header class="header">
+  <div class="container">
+    <div class="header__container">
+      <a href="/" class="header__logo">
+        <picture>
+          <source
+            srcset="./img/svg/logo-mob.svg"
+            type="image/webp"
+            media="(max-width: 576px)"
+          />
+          <img src="./img/svg/logo.svg" width="147" height="28" alt="" />
+        </picture>
+      </a>
+
+      <nav class="nav header__nav">
+        <ul>
+          <li>
+            <a href="#">главная</a>
+          </li>
+          <li>
+            <a href="#">услуги</a>
+          </li>
+          <li>
+            <a href="#">проекты</a>
+          </li>
+          <li>
+            <a href="#">о&nbsp;компании</a>
+          </li>
+          <li>
+            <a href="#">контакты</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="btn btn_medium header__btn">консультация</button>
+
+      <button
+        class="btn-reset burger header__burger"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        data-burger
+      >
+        <span class="burger__line"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+      <main class="main">
+        <section class="hero hero_build">
+  <div class="hero__img">
+    <picture>
+      <source srcset="./img/hero.webp" type="image/webp" />
+      <img
+        loading="lazy"
+        src="./img/hero.webp"
+        class="image"
+        width="1920"
+        height="1000"
+        alt=""
+      />
+    </picture>
+  </div>
+  <div class="hero__container container">
+    <div class="hero__content">
+      <h1 class="hero__title">
+        Строительство по&nbsp;технологии Build-to-Suit
+      </h1>
+      <button class="btn btn_tri hero__btn">обсудить проект</button>
+    </div>
+  </div>
+</section>
+ <section class="profit">
+  <div class="container">
+    <h2 class="profit__title">Почему это&nbsp;выгодно</h2>
+
+    <div class="profit__slider swiper slider-auto">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <article class="card profit__card card_profit">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/profit/01-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/profit/01.webp"
+                  class="image"
+                  width=""
+                  height=""
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title">проектирование Объекта</h3>
+              <p class="card__subtitle">Под&nbsp;ваш&nbsp;бизнес</p>
+              <p class="card__desc">
+                Не нужно подстраивать процессы под готовое помещение или
+                перестраивать арендованную площадь — все технические параметры
+                изначально отвечают вашим требованиям.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="card profit__card card_profit">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/profit/02-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/profit/02.webp"
+                  class="image"
+                  width=""
+                  height=""
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title">Экономия 30–40%</h3>
+              <p class="card__subtitle">
+                По&nbsp;сравнению с&nbsp;покупкой готового объекта
+              </p>
+              <p class="card__desc">
+                Стоимость ниже за&nbsp;счёт отсутствия доработок, прямой работы
+                с&nbsp;подрядчиком и&nbsp;оптимизации проекта
+                под&nbsp;конкретные задачи.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="card profit__card card_profit">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/profit/03-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/profit/03.webp"
+                  class="image"
+                  width=""
+                  height=""
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title">Полный контроль</h3>
+              <p class="card__subtitle">Со&nbsp;стороны заказчика</p>
+              <p class="card__desc">
+                Заказчик согласовывает ключевые решения по&nbsp;проекту, смете
+                и&nbsp;материалам, при&nbsp;этом не&nbsp;занимается оперативным
+                управлением стройкой&nbsp;— этим занимается&nbsp;ССМ.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="card profit__card card_profit">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/profit/04-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/profit/04.webp"
+                  class="image"
+                  width=""
+                  height=""
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title">Единый подрядчик</h3>
+              <p class="card__subtitle">
+                Один договор, одна зона ответственности.
+              </p>
+              <p class="card__desc">
+                Проектирование, производство металлоконструкций, строительство,
+                монтаж инженерных систем и&nbsp;оборудования выполняются
+                собственными силами и&nbsp;ресурсами&nbsp;ССМ.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="card profit__card card_profit">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/profit/05-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/profit/05.webp"
+                  class="image"
+                  width=""
+                  height=""
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title">экономика проекта</h3>
+              <p class="card__subtitle">Прозрачна</p>
+              <p class="card__desc">
+                Сметная стоимость согласовывается до начала работ. График
+                финансирования и календарный план строительства фиксируются в
+                договоре.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <section class="spec">
+  <div class="container container_no-pr">
+    <div class="spec__container">
+      <div class="spec__title spec__title_mob h2">
+        Как&nbsp;это&nbsp;работает
+      </div>
+      <div class="spec__content">
+        <h2 class="spec__title">Как&nbsp;это&nbsp;работает</h2>
+        <div class="spec__desc">
+          <p>
+            Build-to-Suit&nbsp;— это&nbsp;строительство производственного
+            или&nbsp;складского объекта под&nbsp;заказ конкретного клиента
+            с&nbsp;учётом его&nbsp;технологических процессов, логистики
+            и&nbsp;операционной модели.
+            <br /><br />
+            Помещения, построенные по&nbsp;этой технологии, полностью
+            соответствуют задачам бизнеса заказчика: размеры, высота,
+            планировка, нагрузки на&nbsp;полы, температурный режим, доковые
+            зоны, инженерные системы, расположение вспомогательных
+            и&nbsp;административно-бытовых помещений&nbsp;—
+            всё&nbsp;проектируется индивидуально.
+            <br /><br />
+            Заказчик получает объект, готовый к&nbsp;эксплуатации сразу
+            после&nbsp;сдачи, без&nbsp;необходимости доработок, реконструкций
+            или&nbsp;расширений.
+          </p>
+        </div>
+      </div>
+      <div class="spec__img">
+        <picture>
+          <source
+            srcset="./img/spec/02-mob.webp"
+            type="image/webp"
+            media="(max-width: 576px)"
+          />
+          <img
+            loading="lazy"
+            src="./img/spec/02.webp"
+            class="image"
+            width="1024"
+            height="809"
+            alt=""
+          />
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+ <section class="entering">
+  <div class="container">
+    <h2 class="entering__title">Что входит в проект</h2>
+
+    <div class="entering__grid">
+      <div class="entering__card step">
+        <h3 class="step__title">Подбор или согласование земельного участка</h3>
+        <span>01</span>
+      </div>
+      <div class="entering__card step">
+        <h3 class="step__title">
+          Проектирование объекта под техническое задание заказчика
+        </h3>
+        <span>02</span>
+      </div>
+      <div class="entering__card step">
+        <h3 class="step__title">Подготовка строительной площадки</h3>
+        <span>03</span>
+      </div>
+      <div class="entering__card step">
+        <h3 class="step__title">
+          Производство металлоконструкций в собственном цеху
+        </h3>
+        <span>04</span>
+      </div>
+      <div class="entering__card step">
+        <h3 class="step__title">Строительно-монтажные работы</h3>
+        <span>05</span>
+      </div>
+      <div class="entering__card step">
+        <h3 class="step__title">Прокладка инженерных сетей и коммуникаций</h3>
+        <span>06</span>
+      </div>
+      <div class="entering__card step">
+        <h3 class="step__title">Монтаж технологического оборудования</h3>
+        <span>07</span>
+      </div>
+      <div class="entering__card step">
+        <h3 class="step__title">Пусконаладка и ввод объекта в эксплуатацию</h3>
+        <span>08</span>
+      </div>
+      <div class="entering__card step">
+        <h3 class="step__title">
+          Гарантийные обязательства в течение послеэксплуатационного периода
+        </h3>
+        <span>09</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <section class="suit">
+  <div class="container">
+    <div class="suit__header heading">
+      <h2 class="suit__title">Для кого подходит</h2>
+
+      <button class="btn btn_tri btn-nomob suit__btn">рассчитать проект</button>
+    </div>
+
+    <div class="suit__slider swiper slider-3">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <article class="suit__card card">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/suit/01-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/suit/01.webp"
+                  class="image"
+                  width="560"
+                  height="400"
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title">Промышленные предприятия</h3>
+              <p>
+                Производственные корпуса под конкретную технологию
+                с&nbsp;крановым оборудованием, виброизоляцией, сложными
+                фундаментами.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="suit__card card">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/suit/02-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/suit/02.webp"
+                  class="image"
+                  width="560"
+                  height="400"
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title">Ритейл и логистика</h3>
+              <p>
+                Склады под операционную модель компании с нужным температурным
+                режимом, нагрузкой на полы, доковыми зонами и инженерией.
+              </p>
+            </div>
+          </article>
+        </div>
+        <div class="swiper-slide">
+          <article class="suit__card card">
+            <div class="card__img">
+              <picture>
+                <source
+                  srcset="./img/suit/03-mob.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/suit/03.webp"
+                  class="image"
+                  width="560"
+                  height="400"
+                  alt=""
+                />
+              </picture>
+            </div>
+            <div class="card__content">
+              <h3 class="card__title">
+                Коммунальные и инфраструктурные организации
+              </h3>
+              <p>
+                Котельные, насосные станции, резервуары, теплотрассы — объекты,
+                где остановка эксплуатации недопустима.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn_tri btn-mob suit__btn">рассчитать проект</button>
+  </div>
+</section>
+ <section class="cta">
+  <div class="container container_no-pr">
+    <div class="cta__container">
+      <div class="cta__content">
+        <h2 class="cta__title">оставьте заявку</h2>
+        <p class="cta__subtitle">
+          Наш специалист свяжется с&nbsp;вами в&nbsp;течение рабочего дня
+        </p>
+        <p class="cta__text">
+          Расскажите про&nbsp;объект&nbsp;— мы&nbsp;предварительно оценим
+          стоимость и&nbsp;сроки, согласуем выезд инженера на&nbsp;площадку
+          и&nbsp;предоставим техническое предложение.
+        </p>
+
+        <form action="#" class="cta__form form">
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper">
+              <input
+                type="text"
+                class="form__input input-name"
+                name="Имя"
+                required
+              />
+              <div class="form__label">имя</div>
+            </label>
+          </div>
+
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper">
+              <input
+                type="text"
+                class="form__input input-tel-email"
+                name="телефон или email"
+                required
+              />
+              <div class="form__label">телефон или email</div>
+            </label>
+          </div>
+
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper">
+              <input type="text" class="form__input input-city" name="город" />
+              <div class="form__label">город</div>
+            </label>
+          </div>
+
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper form__field-wrapper--area">
+              <textarea
+                class="form__input form__input--area input-mess"
+                name="Сообщение"
+              ></textarea>
+              <div class="form__label">
+                краткое описание задачи (необязательно)
+              </div>
+            </label>
+          </div>
+          <button class="btn btn-reset btn--accent form__btn" disabled>
+            отправить заявку
+          </button>
+          <p class="form__extra">
+            Отправляя заявку, вы соглашаетесь с&nbsp;<a href="#" target="_blank"
+              >политикой обработки персональных данных</a
+            >.
+          </p>
+        </form>
+      </div>
+      <div class="cta__img">
+        <picture>
+          <source
+            srcset="./img/cta-mob.webp"
+            type="image/webp"
+            media="(max-width: 576px)"
+          />
+          <img
+            loading="lazy"
+            src="./img/cta.webp"
+            class="image"
+            width="1300"
+            height="800"
+            alt=""
+          />
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+      </main>
+      <footer class="footer">
+  <div class="container">
+    <div class="footer__container">
+      <address class="footer__col">
+        <div>
+          <p class="footer__item">
+            <a href="mailto:specstroymon@yandex.ru">specstroymon@yandex.ru</a>
+          </p>
+          <p class="footer__item">
+            <a href="tel:+7 951 022 09 99">+79510220999</a>
+          </p>
+          <p class="footer__item">Часы работы: пн–пт, 9:00–18:00</p>
+        </div>
+        <div class="footer-gray">
+          <p>
+            690080, Приморский край, г.&nbsp;Владивосток,
+            ул.&nbsp;Добровольского, д.&nbsp;5, помещение&nbsp;5
+          </p>
+        </div>
+      </address>
+
+      <nav class="footer__col">
+        <ul>
+          <li>
+            <a href="#">Подать заявку</a>
+          </li>
+          <li>
+            <a href="#">Получить расчёт</a>
+          </li>
+          <li>
+            <a href="#">Согласовать выезд инженера</a>
+          </li>
+          <li>
+            <a href="#">Запросить смету</a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col footer__col_nav">
+        <ul>
+          <li>
+            <a href="#">Главная</a>
+          </li>
+          <li>
+            <a href="#">Услуги</a>
+          </li>
+          <li>
+            <a href="#">О компании</a>
+          </li>
+          <li>
+            <a href="#">Проекты</a>
+          </li>
+          <li>
+            <a href="#">Новости</a>
+          </li>
+          <li>
+            <a href="#">Контакты</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="footer__col footer-gray">
+        <div>
+          <p class="footer__item">
+            <a href="#" target="_blank">Политика конфиденциальности</a>
+          </p>
+          <p class="footer__item">
+            <p target="_blank">© 2026 ООО «СпецСтройМонтаж».</p>
+          </p>
+        </div>
+
+        <div>
+          <a href="https://peremena.store" target="_blank">Создано Переменой</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

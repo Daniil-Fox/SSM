@@ -1,0 +1,18 @@
+.entering {
+  &__title {
+    margin-bottom: 6rem;
+    @include mobile {
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+}

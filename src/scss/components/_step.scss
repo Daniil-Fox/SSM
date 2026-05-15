@@ -1,0 +1,20 @@
+.step {
+  padding: 4.4rem;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  background-color: #f7f7f7;
+  &__title {
+    text-transform: inherit;
+    font-size: 2rem;
+  }
+  span {
+    font-family: var(--second-family);
+    font-weight: 500;
+    font-size: 2.6rem;
+    line-height: 140%;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+}

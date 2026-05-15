@@ -1,0 +1,19 @@
+.profit {
+  overflow: hidden;
+  &__title {
+    margin-bottom: 6rem;
+    @include mobile {
+      margin-bottom: 5rem;
+    }
+  }
+  &__slider {
+    overflow: visible;
+    cursor: grab;
+  }
+  &__card {
+    width: 53rem;
+    @include mobile {
+      width: 47.6rem;
+    }
+  }
+}

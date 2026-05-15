@@ -42,3 +42,22 @@ if (sliders3.length) {
     });
   });
 }
+
+const slidersAuto = document.querySelectorAll(".slider-auto");
+if (slidersAuto.length) {
+  slidersAuto.forEach((slider) => {
+    new Swiper(slider, {
+      slidesPerView: "auto",
+      spaceBetween: 40,
+
+      breakpoints: {
+        320: {
+          spaceBetween: 20,
+        },
+        577: {
+          spaceBetween: 40,
+        },
+      },
+    });
+  });
+}

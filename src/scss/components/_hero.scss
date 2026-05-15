@@ -21,11 +21,11 @@
     mask-image: url("./../img/svg/hero-mask.svg");
     mask-size: auto 100%;
     mask-repeat: no-repeat;
-    mask-position: center;
+    mask-position: 65% 50%;
     @include mobile {
       // mask-image: url("./../img/svg/hero-mask-mob.svg");
       mask-size: 222rem 100%;
-      mask-position: -40rem 50%;
+      mask-position: -50rem 50%;
       height: 70%;
       top: 50%;
       transform: translateY(-50%);
@@ -42,6 +42,15 @@
         rgba(0, 0, 0, 0.4),
         transparent
       );
+      @include mobile {
+        width: 100%;
+        height: 70%;
+        background-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.4),
+          transparent
+        );
+      }
     }
     img {
       display: block;
@@ -74,6 +83,18 @@
     @include mobile {
       min-width: unset;
       width: calc(100% - 5rem);
+    }
+  }
+
+  &_build &__img {
+    mask-position: 20% 50%;
+    @include mobile {
+      mask-position: -50rem 50%;
+    }
+  }
+  &_build &__title {
+    @include mobile {
+      font-size: 4rem;
     }
   }
 }
