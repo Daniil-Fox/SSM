@@ -1,0 +1,21 @@
+.accordeon {
+  &__trigger {
+    margin-bottom: 3rem;
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 120%;
+    color: var(--black);
+
+    @include mobile {
+      cursor: pointer;
+    }
+  }
+
+  &__body {
+    @include mobile {
+      box-sizing: content-box;
+      transition: max-height 0.3s ease-in;
+      will-change: max-height;
+    }
+  }
+}

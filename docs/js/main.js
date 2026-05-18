@@ -5668,6 +5668,7 @@ window.addEventListener("DOMContentLoaded", () => {
 __webpack_require__.r(__webpack_exports__);
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".spec__desc");
+  if (!container) return;
   const paragraph = container.querySelector("p");
   let toggleBtn = null;
   let isExpanded = false;

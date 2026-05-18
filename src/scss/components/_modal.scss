@@ -1,0 +1,135 @@
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 990;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: var(--container-offset);
+  display: flex;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+
+    margin-bottom: 2rem;
+  }
+  &__desc:not(:last-child) {
+    margin-bottom: 5rem;
+  }
+
+  &__close {
+    width: 2.6rem;
+    height: 2.6rem;
+    flex-shrink: 0;
+    color: var(--black);
+    transition: color 0.3s ease-in;
+    svg {
+      width: 100%;
+      height: 100%;
+      stroke: currentColor;
+      stroke-width: 0.4rem;
+      stroke-linecap: round;
+    }
+
+    @include hover {
+      color: var(--red);
+    }
+    &:focus-visible {
+      outline: none;
+      color: var(--red);
+    }
+    &:active {
+      color: var(--red);
+    }
+  }
+  &__body {
+    margin: auto;
+    width: 100%;
+    max-width: var(--content-width);
+    background-color: var(--white);
+    padding: 8rem;
+    border-radius: 2rem;
+  }
+
+  &__title {
+    font-size: 3rem;
+  }
+
+  &__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+
+    &:not(:last-child) {
+      margin-bottom: 5rem;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__btn {
+    width: 100%;
+    max-width: 37rem;
+  }
+}
+
+.modal_service {
+  @include mobile {
+    padding: 0;
+    .modal__body {
+      position: relative;
+      border-radius: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+    .modal__header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      margin-bottom: 0;
+      padding: 4rem 3rem;
+      background-color: #fff;
+      border-radius: 0 0 2rem 2rem;
+    }
+    .modal__title {
+      font-size: 2.4rem;
+      text-transform: initial;
+    }
+    .modal__content {
+      padding: var(--container-offset);
+    }
+    .modal__bottom {
+      position: sticky;
+      bottom: 0;
+      z-index: 2;
+      padding: 3rem;
+      background-color: var(--white);
+      border-radius: 2rem 2rem 0 0;
+    }
+
+    .modal__btn {
+      flex-grow: 1;
+      max-width: calc(100% - 5rem);
+    }
+  }
+}
