@@ -1,0 +1,14 @@
+.services-main {
+  &__title {
+    margin-bottom: 3rem;
+  }
+  &__desc {
+    &:not(:last-child) {
+      margin-bottom: 6rem;
+    }
+  }
+  &__items {
+    display: grid;
+    gap: 4rem;
+  }
+}

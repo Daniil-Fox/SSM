@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="ru" class="page">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="theme-color" content="#111111" />
+  <title>ССМ</title>
+  <link
+    rel="preload"
+    href="fonts/Bounded-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/Bounded-Medium.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/Bounded-SemiBold.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/NotoSans-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/NotoSans-Light.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/NotoSans-Medium.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/NotoSans-SemiBold.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link rel="stylesheet" href="css/vendor.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <script defer src="js/main.js"></script>
+</head>
+
+
+  <body class="page__body">
+    <div class="site-container">
+      <header class="header">
+  <div class="container">
+    <div class="header__container">
+      <a href="/" class="header__logo">
+        <picture>
+          <source
+            srcset="./img/svg/logo-mob.svg"
+            type="image/webp"
+            media="(max-width: 576px)"
+          />
+          <img src="./img/svg/logo.svg" width="147" height="28" alt="" />
+        </picture>
+      </a>
+
+      <nav class="nav header__nav">
+        <ul>
+          <li>
+            <a href="#">главная</a>
+          </li>
+          <li>
+            <a href="#">услуги</a>
+          </li>
+          <li>
+            <a href="#">проекты</a>
+          </li>
+          <li>
+            <a href="#">о&nbsp;компании</a>
+          </li>
+          <li>
+            <a href="#">контакты</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="btn btn_medium header__btn">консультация</button>
+
+      <button
+        class="btn-reset burger header__burger"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        data-burger
+      >
+        <span class="burger__line"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+      <main class="main">
+        <section class="news-page">
+          <div class="container">
+            <div class="heading news-page__header">
+              <h1 class="h2 news-page__title">Новости</h1>
+            </div>
+
+            <div class="news-page__list">
+              <article class="news-page__item">
+                <div class="news-page__item-img">
+                  <picture>
+                    <source
+                      srcset="./img/news/01.webp"
+                      type="image/webp"
+                      media="(max-width: 576px)"
+                    />
+                    <img
+                      loading="lazy"
+                      src="./img/news/01.webp"
+                      class="image"
+                      width="760"
+                      height="250"
+                      alt=""
+                    />
+                  </picture>
+                </div>
+                <div class="news-page__item-content">
+                  <div class="news-page__item-text">
+                    <h3 class="news-page__item-title h4">
+                      <a href="#"
+                        >Завершено строительство складского комплекса по схеме
+                        Build-to-Suit</a
+                      >
+                    </h3>
+                    <p>
+                      Сдан объект, спроектированный под индивидуальные задачи
+                      заказчика: температурный режим, доковые зоны, нагрузки на
+                      полы.
+                    </p>
+                  </div>
+                  <time datetime="20.03.2026">20.03.2026</time>
+                </div>
+              </article>
+
+              <article class="news-page__item">
+                <div class="news-page__item-img">
+                  <picture>
+                    <source
+                      srcset="./img/news/02.webp"
+                      type="image/webp"
+                      media="(max-width: 576px)"
+                    />
+                    <img
+                      loading="lazy"
+                      src="./img/news/02.webp"
+                      class="image"
+                      width="760"
+                      height="250"
+                      alt=""
+                    />
+                  </picture>
+                </div>
+                <div class="news-page__item-content">
+                  <div class="news-page__item-text">
+                    <h3 class="news-page__item-title h4">
+                      <a href="#"
+                        >Выполнен монтаж технологического оборудования</a
+                      >
+                    </h3>
+                    <p>
+                      Завершены монтажные и пусконаладочные работы на
+                      производственной площадке заказчика.
+                    </p>
+                  </div>
+                  <time datetime="20.03.2026">20.03.2026</time>
+                </div>
+              </article>
+
+              <article class="news-page__item">
+                <div class="news-page__item-img">
+                  <picture>
+                    <source
+                      srcset="./img/news/03.webp"
+                      type="image/webp"
+                      media="(max-width: 576px)"
+                    />
+                    <img
+                      loading="lazy"
+                      src="./img/news/03.webp"
+                      class="image"
+                      width="760"
+                      height="250"
+                      alt=""
+                    />
+                  </picture>
+                </div>
+                <div class="news-page__item-content">
+                  <div class="news-page__item-text">
+                    <h3 class="news-page__item-title h4">
+                      <a href="#"
+                        >Расширены мощности собственного цеха
+                        металлоконструкций</a
+                      >
+                    </h3>
+                    <p>
+                      Увеличены производственные мощности по изготовлению
+                      металлоконструкций нестандартных форм.
+                    </p>
+                  </div>
+                  <time datetime="20.03.2026">20.03.2026</time>
+                </div>
+              </article>
+
+              <article class="news-page__item">
+                <div class="news-page__item-img">
+                  <picture>
+                    <source
+                      srcset="./img/news/04.webp"
+                      type="image/webp"
+                      media="(max-width: 576px)"
+                    />
+                    <img
+                      loading="lazy"
+                      src="./img/news/04.webp"
+                      class="image"
+                      width="760"
+                      height="250"
+                      alt=""
+                    />
+                  </picture>
+                </div>
+                <div class="news-page__item-content">
+                  <div class="news-page__item-text">
+                    <h3 class="news-page__item-title h4">
+                      <a href="#"
+                        >Специалисты компании подтвердили допуски по высотным и
+                        сварочным работам</a
+                      >
+                    </h3>
+                    <p>
+                      Пройдена аттестация НАКС и подтверждены допуски к высотным
+                      работам на объектах 1–4 класса опасности.
+                    </p>
+                  </div>
+                  <time datetime="20.03.2026">20.03.2026</time>
+                </div>
+              </article>
+            </div>
+
+            <div class="news-page__control">
+              <button class="btn btn_tri btn_dark news-page__btn">
+                показать ещё
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+  <div class="container">
+    <div class="footer__container">
+      <address class="footer__col">
+        <div>
+          <p class="footer__item">
+            <a href="mailto:specstroymon@yandex.ru">specstroymon@yandex.ru</a>
+          </p>
+          <p class="footer__item">
+            <a href="tel:+7 951 022 09 99">+79510220999</a>
+          </p>
+          <p class="footer__item">Часы работы: пн–пт, 9:00–18:00</p>
+        </div>
+        <div class="footer-gray">
+          <p>
+            690080, Приморский край, г.&nbsp;Владивосток,
+            ул.&nbsp;Добровольского, д.&nbsp;5, помещение&nbsp;5
+          </p>
+        </div>
+      </address>
+
+      <nav class="footer__col">
+        <ul>
+          <li>
+            <a href="#">Подать заявку</a>
+          </li>
+          <li>
+            <a href="#">Получить расчёт</a>
+          </li>
+          <li>
+            <a href="#">Согласовать выезд инженера</a>
+          </li>
+          <li>
+            <a href="#">Запросить смету</a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col footer__col_nav">
+        <ul>
+          <li>
+            <a href="#">Главная</a>
+          </li>
+          <li>
+            <a href="#">Услуги</a>
+          </li>
+          <li>
+            <a href="#">О компании</a>
+          </li>
+          <li>
+            <a href="#">Проекты</a>
+          </li>
+          <li>
+            <a href="#">Новости</a>
+          </li>
+          <li>
+            <a href="#">Контакты</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="footer__col footer-gray">
+        <div>
+          <p class="footer__item">
+            <a href="#" target="_blank">Политика конфиденциальности</a>
+          </p>
+          <p class="footer__item">
+            <p target="_blank">© 2026 ООО «СпецСтройМонтаж».</p>
+          </p>
+        </div>
+
+        <div>
+          <a href="https://peremena.store" target="_blank">Создано Переменой</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

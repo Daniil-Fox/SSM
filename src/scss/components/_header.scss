@@ -46,7 +46,11 @@
 }
 
 .burger {
+  display: none;
   @include burger;
+  @include mobile {
+    display: block;
+  }
 }
 .header--fixed {
   position: fixed;

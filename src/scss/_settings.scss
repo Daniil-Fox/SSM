@@ -112,7 +112,12 @@ a {
 .page--ios .dis-scroll {
   position: relative;
 }
-
+section:first-child {
+  padding-top: 5rem;
+  @include mobile {
+    padding-top: 15rem;
+  }
+}
 section.hero {
   padding: 5rem 0 12rem;
 

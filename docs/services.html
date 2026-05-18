@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="ru" class="page">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="theme-color" content="#111111" />
+  <title>ССМ</title>
+  <link
+    rel="preload"
+    href="fonts/Bounded-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/Bounded-Medium.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/Bounded-SemiBold.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/NotoSans-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/NotoSans-Light.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/NotoSans-Medium.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link
+    rel="preload"
+    href="fonts/NotoSans-SemiBold.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+  <link rel="stylesheet" href="css/vendor.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <script defer src="js/main.js"></script>
+</head>
+
+
+  <body class="page__body">
+    <div class="site-container">
+      <header class="header">
+  <div class="container">
+    <div class="header__container">
+      <a href="/" class="header__logo">
+        <picture>
+          <source
+            srcset="./img/svg/logo-mob.svg"
+            type="image/webp"
+            media="(max-width: 576px)"
+          />
+          <img src="./img/svg/logo.svg" width="147" height="28" alt="" />
+        </picture>
+      </a>
+
+      <nav class="nav header__nav">
+        <ul>
+          <li>
+            <a href="#">главная</a>
+          </li>
+          <li>
+            <a href="#">услуги</a>
+          </li>
+          <li>
+            <a href="#">проекты</a>
+          </li>
+          <li>
+            <a href="#">о&nbsp;компании</a>
+          </li>
+          <li>
+            <a href="#">контакты</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="btn btn_medium header__btn">консультация</button>
+
+      <button
+        class="btn-reset burger header__burger"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        data-burger
+      >
+        <span class="burger__line"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+      <main class="main">
+        <section class="services-main">
+  <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+    <div class="container">
+      <span>
+        <span><a href="#">Главная</a></span>
+        &gt;
+        <span class="breadcrumb_last" aria-current="page">Статья</span>
+      </span>
+    </div>
+  </nav>
+  <div class="container">
+    <h1 class="h2 services-main__title">Основные услуги</h1>
+    <p class="services-main__desc">
+      Четыре направления, в которых мы делаем полный цикл — от технического
+      задания до акта ввода в эксплуатацию.
+    </p>
+
+    <div class="services-main__items">
+      <article class="services-main__card service-card">
+        <div class="service-card__content">
+          <h2 class="service-card__title h3">
+            <a href="#">Строительство складов разного назначения</a>
+          </h2>
+          <p class="btn-nomob">
+            Проектируем и&nbsp;строим складские комплексы под&nbsp;конкретную
+            операционную модель заказчика: температурный режим, высоту хранения,
+            нагрузку на&nbsp;полы, доковые зоны, логистические маршруты,
+            административно-бытовые помещения.
+            <br /><br />
+            Подходит для&nbsp;дистрибьюторов, e-commerce, логистических
+            операторов и&nbsp;сетевого ритейла.
+          </p>
+          <p class="btn-mob">
+            Сдан объект, спроектированный под&nbsp;индивидуальные задачи
+            заказчика: температурный режим, доковые зоны, нагрузки на&nbsp;полы.
+          </p>
+        </div>
+        <div class="service-card__img">
+          <picture>
+            <source
+              srcset="./img/services-card/01.webp"
+              type="image/webp"
+              media="(max-width: 576px)"
+            />
+            <img
+              loading="lazy"
+              src="./img/services-card/01.webp"
+              class="image"
+              width="896"
+              height="453"
+              alt=""
+            />
+          </picture>
+        </div>
+      </article>
+
+      <article class="services-main__card service-card">
+        <div class="service-card__content">
+          <h2 class="service-card__title h3">
+            <a href="#">Инженерные системы и&nbsp;коммуникации</a>
+          </h2>
+          <p class="btn-nomob">
+            Проектирование и&nbsp;монтаж инженерных сетей, технологического
+            оборудования, пусконаладочные работы и&nbsp;ввод объектов
+            в&nbsp;эксплуатацию.
+            <br /><br />
+            Котельные на&nbsp;газе, жидком и&nbsp;твёрдом топливе, теплотрассы
+            и&nbsp;теплоузлы, водонапорные узлы, насосные станции&nbsp;—
+            объекты, где&nbsp;остановка эксплуатации недопустима.
+          </p>
+          <p class="btn-mob">
+            Котельные, теплотрассы, водонапорные узлы, насосные станции, монтаж
+            технологического оборудования.
+          </p>
+        </div>
+        <div class="service-card__img">
+          <picture>
+            <source
+              srcset="./img/services-card/02.webp"
+              type="image/webp"
+              media="(max-width: 576px)"
+            />
+            <img
+              loading="lazy"
+              src="./img/services-card/02.webp"
+              class="image"
+              width="896"
+              height="453"
+              alt=""
+            />
+          </picture>
+        </div>
+      </article>
+
+      <article class="services-main__card service-card">
+        <div class="service-card__content">
+          <h2 class="service-card__title h3">
+            <a href="#">Строительство промышленных объектов</a>
+          </h2>
+          <p class="btn-nomob">
+            Производственные здания и&nbsp;цеха под&nbsp;конкретную
+            технологию&nbsp;— с&nbsp;крановыми путями, виброизоляцией,
+            усиленными фундаментами, специальными средами и&nbsp;требованиями
+            по&nbsp;промышленной безопасности.
+            <br /><br />
+            Работаем с&nbsp;машиностроительными, пищевыми, энергетическими
+            и&nbsp;перерабатывающими предприятиями.
+          </p>
+
+          <p class="btn-mob">
+            Производственные здания и&nbsp;цеха под&nbsp;конкретную
+            технологию&nbsp;— с&nbsp;крановыми путями, усиленными фундаментами,
+            особыми средами.
+          </p>
+        </div>
+        <div class="service-card__img">
+          <picture>
+            <source
+              srcset="./img/services-card/03.webp"
+              type="image/webp"
+              media="(max-width: 576px)"
+            />
+            <img
+              loading="lazy"
+              src="./img/services-card/03.webp"
+              class="image"
+              width="896"
+              height="453"
+              alt=""
+            />
+          </picture>
+        </div>
+      </article>
+
+      <article class="services-main__card service-card">
+        <div class="service-card__content">
+          <h2 class="service-card__title h3">
+            <a href="#">Реконструкция и&nbsp;модернизация предприятий</a>
+          </h2>
+          <p class="btn-nomob">
+            Обновление действующих производственных корпусов: замена инженерных
+            сетей, устройство промышленных полов, подготовка площадок
+            под&nbsp;новое технологическое оборудование, усиление несущих
+            конструкций.
+            <br /><br />Работы ведём с&nbsp;минимизацией простоя производства.
+          </p>
+          <p class="btn-mob">
+            Обновление действующих производств с&nbsp;заменой инженерных сетей
+            и&nbsp;подготовкой под&nbsp;новое оборудование.
+          </p>
+        </div>
+        <div class="service-card__img">
+          <picture>
+            <source
+              srcset="./img/services-card/04.webp"
+              type="image/webp"
+              media="(max-width: 576px)"
+            />
+            <img
+              loading="lazy"
+              src="./img/services-card/04.webp"
+              class="image"
+              width="896"
+              height="453"
+              alt=""
+            />
+          </picture>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+        <section class="services-extra">
+  <div class="container">
+    <h2 class="services-extra__title">Дополнительные услуги</h2>
+
+    <div class="services-extra__items swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <article class="services-extra__card">
+            <div class="services-extra__card-img">
+              <picture>
+                <source
+                  srcset="./img/services-card/05.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/services-card/05.webp"
+                  class="image"
+                  width="410"
+                  height="394"
+                  alt=""
+                />
+              </picture>
+            </div>
+
+            <div class="services-extra__card-content">
+              <h3 class="h4 services-extra__card-title">
+                <a href="#">
+                  Пусконаладочные работы инженерных систем и&nbsp;оборудования
+                </a>
+              </h3>
+              <p class="services-extra__card-desc">
+                Запуск, настройка и сдача в эксплуатацию инженерных систем и
+                технологического оборудования на промышленных и складских
+                объектах. Включает работу с автоматикой, вентиляцией,
+                отоплением, холодильным оборудованием, электрооборудованием.
+              </p>
+            </div>
+          </article>
+        </div>
+        <div class="swiper-slide">
+          <article class="services-extra__card">
+            <div class="services-extra__card-img">
+              <picture>
+                <source
+                  srcset="./img/services-card/06.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/services-card/06.webp"
+                  class="image"
+                  width="410"
+                  height="394"
+                  alt=""
+                />
+              </picture>
+            </div>
+
+            <div class="services-extra__card-content">
+              <h3 class="h4 services-extra__card-title">
+                <a href="#"> Строительство сложных промышленных фундаментов </a>
+              </h3>
+              <p class="services-extra__card-desc">
+                Фундаменты под&nbsp;технологическое оборудование,
+                в&nbsp;том&nbsp;числе в&nbsp;болотистых грунтах, на&nbsp;свайных
+                основаниях и&nbsp;при&nbsp;глубоком заложении. Расчёт нагрузок,
+                виброизоляция, гидроизоляция, защита от&nbsp;агрессивных сред.
+              </p>
+            </div>
+          </article>
+        </div>
+        <div class="swiper-slide">
+          <article class="services-extra__card">
+            <div class="services-extra__card-img">
+              <picture>
+                <source
+                  srcset="./img/services-card/07.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/services-card/07.webp"
+                  class="image"
+                  width="410"
+                  height="394"
+                  alt=""
+                />
+              </picture>
+            </div>
+
+            <div class="services-extra__card-content">
+              <h3 class="h4 services-extra__card-title">
+                <a href="#">
+                  Устройство промышленных полов для предприятий 1–4 класса
+                  опасности
+                </a>
+              </h3>
+              <p class="services-extra__card-desc">
+                Монолитные и&nbsp;наливные полы с&nbsp;учётом механических
+                нагрузок, химической стойкости и&nbsp;требований промышленной
+                безопасности. Под&nbsp;погрузчики, стеллажи, тяжёлое
+                оборудование, агрессивные среды.
+              </p>
+            </div>
+          </article>
+        </div>
+        <div class="swiper-slide">
+          <article class="services-extra__card">
+            <div class="services-extra__card-img">
+              <picture>
+                <source
+                  srcset="./img/services-card/08.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/services-card/08.webp"
+                  class="image"
+                  width="410"
+                  height="394"
+                  alt=""
+                />
+              </picture>
+            </div>
+
+            <div class="services-extra__card-content">
+              <h3 class="h4 services-extra__card-title">
+                <a href="#"> Высотные монтажные и&nbsp;сварочные работы </a>
+              </h3>
+              <p class="services-extra__card-desc">
+                Монтаж и&nbsp;сварка металлоконструкций на&nbsp;высоте свыше
+                20&nbsp;метров. Специалисты с&nbsp;допусками НАКС
+                и&nbsp;аттестациями к&nbsp;высотным работам. Работа
+                с&nbsp;лесов, люлек, в&nbsp;автоприцепах
+                и&nbsp;с&nbsp;применением промальпинизма.
+              </p>
+            </div>
+          </article>
+        </div>
+        <div class="swiper-slide">
+          <article class="services-extra__card">
+            <div class="services-extra__card-img">
+              <picture>
+                <source
+                  srcset="./img/services-card/09.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/services-card/09.webp"
+                  class="image"
+                  width="410"
+                  height="394"
+                  alt=""
+                />
+              </picture>
+            </div>
+
+            <div class="services-extra__card-content">
+              <h3 class="h4 services-extra__card-title">
+                <a href="#"> Монтаж и демонтаж пищевого оборудования </a>
+              </h3>
+              <p class="services-extra__card-desc">
+                Работы по&nbsp;технологическим линиям пищевых производств
+                с&nbsp;соблюдением санитарных требований и&nbsp;регламентов
+                пищевой безопасности (ХАССП, ТР&nbsp;ТС 021). Холодильное
+                и&nbsp;морозильное оборудование, моечные комплексы, конвейеры,
+                фасовочные линии.
+              </p>
+            </div>
+          </article>
+        </div>
+        <div class="swiper-slide">
+          <article class="services-extra__card">
+            <div class="services-extra__card-img">
+              <picture>
+                <source
+                  srcset="./img/services-card/10.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/services-card/10.webp"
+                  class="image"
+                  width="410"
+                  height="394"
+                  alt=""
+                />
+              </picture>
+            </div>
+
+            <div class="services-extra__card-content">
+              <h3 class="h4 services-extra__card-title">
+                <a href="#">
+                  Монтаж импортного оборудования по оригинальной документации
+                  производителя
+                </a>
+              </h3>
+              <p class="services-extra__card-desc">
+                Работа с&nbsp;импортным технологическим оборудованием
+                по&nbsp;оригинальной документации производителя. Соответствие
+                техническим инструкциям и&nbsp;регламентам без&nbsp;вольной
+                интерпретации. Английский и&nbsp;китайский языки.
+              </p>
+            </div>
+          </article>
+        </div>
+        <div class="swiper-slide">
+          <article class="services-extra__card">
+            <div class="services-extra__card-img">
+              <picture>
+                <source
+                  srcset="./img/services-card/11.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/services-card/11.webp"
+                  class="image"
+                  width="410"
+                  height="394"
+                  alt=""
+                />
+              </picture>
+            </div>
+
+            <div class="services-extra__card-content">
+              <h3 class="h4 services-extra__card-title">
+                <a href="#"> Чистовая отделка производственных помещений </a>
+              </h3>
+              <p class="services-extra__card-desc">
+                Завершающие работы в&nbsp;производственных зданиях: стены,
+                потолки, полы, технические перегородки, дверные группы.
+                В&nbsp;соответствии с&nbsp;требованиями заказчика
+                и&nbsp;отраслевыми нормами (пищевые, фармацевтические,
+                машиностроительные предприятия).
+              </p>
+            </div>
+          </article>
+        </div>
+        <div class="swiper-slide">
+          <article class="services-extra__card">
+            <div class="services-extra__card-img">
+              <picture>
+                <source
+                  srcset="./img/services-card/12.webp"
+                  type="image/webp"
+                  media="(max-width: 576px)"
+                />
+                <img
+                  loading="lazy"
+                  src="./img/services-card/12.webp"
+                  class="image"
+                  width="410"
+                  height="394"
+                  alt=""
+                />
+              </picture>
+            </div>
+
+            <div class="services-extra__card-content">
+              <h3 class="h4 services-extra__card-title">
+                <a href="#"> Безопасный демонтаж промышленного оборудования</a>
+              </h3>
+              <p class="services-extra__card-desc">
+                Демонтаж оборудования на&nbsp;действующих и&nbsp;выведенных
+                из&nbsp;эксплуатации производствах. С&nbsp;последующей
+                утилизацией металлолома, очисткой технологических контуров
+                и&nbsp;подготовкой площадки под&nbsp;новое оборудование.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ <section class="cta">
+  <div class="container container_no-pr">
+    <div class="cta__container">
+      <div class="cta__content">
+        <h2 class="cta__title">оставьте заявку</h2>
+        <p class="cta__subtitle">
+          Наш специалист свяжется с&nbsp;вами в&nbsp;течение рабочего дня
+        </p>
+        <p class="cta__text">
+          Расскажите про&nbsp;объект&nbsp;— мы&nbsp;предварительно оценим
+          стоимость и&nbsp;сроки, согласуем выезд инженера на&nbsp;площадку
+          и&nbsp;предоставим техническое предложение.
+        </p>
+
+        <form action="#" class="cta__form form">
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper">
+              <input
+                type="text"
+                class="form__input input-name"
+                name="Имя"
+                required
+              />
+              <div class="form__label">имя</div>
+            </label>
+          </div>
+
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper">
+              <input
+                type="text"
+                class="form__input input-tel-email"
+                name="телефон или email"
+                required
+              />
+              <div class="form__label">телефон или email</div>
+            </label>
+          </div>
+
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper">
+              <input type="text" class="form__input input-city" name="город" />
+              <div class="form__label">город</div>
+            </label>
+          </div>
+
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper form__field-wrapper--area">
+              <textarea
+                class="form__input form__input--area input-mess"
+                name="Сообщение"
+              ></textarea>
+              <div class="form__label">
+                краткое описание задачи (необязательно)
+              </div>
+            </label>
+          </div>
+          <button class="btn btn-reset btn--accent form__btn" disabled>
+            отправить заявку
+          </button>
+          <p class="form__extra">
+            Отправляя заявку, вы соглашаетесь с&nbsp;<a href="#" target="_blank"
+              >политикой обработки персональных данных</a
+            >.
+          </p>
+        </form>
+      </div>
+      <div class="cta__img">
+        <picture>
+          <source
+            srcset="./img/cta-mob.webp"
+            type="image/webp"
+            media="(max-width: 576px)"
+          />
+          <img
+            loading="lazy"
+            src="./img/cta.webp"
+            class="image"
+            width="1300"
+            height="800"
+            alt=""
+          />
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+      </main>
+      <footer class="footer">
+  <div class="container">
+    <div class="footer__container">
+      <address class="footer__col">
+        <div>
+          <p class="footer__item">
+            <a href="mailto:specstroymon@yandex.ru">specstroymon@yandex.ru</a>
+          </p>
+          <p class="footer__item">
+            <a href="tel:+7 951 022 09 99">+79510220999</a>
+          </p>
+          <p class="footer__item">Часы работы: пн–пт, 9:00–18:00</p>
+        </div>
+        <div class="footer-gray">
+          <p>
+            690080, Приморский край, г.&nbsp;Владивосток,
+            ул.&nbsp;Добровольского, д.&nbsp;5, помещение&nbsp;5
+          </p>
+        </div>
+      </address>
+
+      <nav class="footer__col">
+        <ul>
+          <li>
+            <a href="#">Подать заявку</a>
+          </li>
+          <li>
+            <a href="#">Получить расчёт</a>
+          </li>
+          <li>
+            <a href="#">Согласовать выезд инженера</a>
+          </li>
+          <li>
+            <a href="#">Запросить смету</a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col footer__col_nav">
+        <ul>
+          <li>
+            <a href="#">Главная</a>
+          </li>
+          <li>
+            <a href="#">Услуги</a>
+          </li>
+          <li>
+            <a href="#">О компании</a>
+          </li>
+          <li>
+            <a href="#">Проекты</a>
+          </li>
+          <li>
+            <a href="#">Новости</a>
+          </li>
+          <li>
+            <a href="#">Контакты</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="footer__col footer-gray">
+        <div>
+          <p class="footer__item">
+            <a href="#" target="_blank">Политика конфиденциальности</a>
+          </p>
+          <p class="footer__item">
+            <p target="_blank">© 2026 ООО «СпецСтройМонтаж».</p>
+          </p>
+        </div>
+
+        <div>
+          <a href="https://peremena.store" target="_blank">Создано Переменой</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+  </body>
+</html>

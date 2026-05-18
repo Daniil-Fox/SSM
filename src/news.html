@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ru" class="page">
+  @include('partials/head.html')
+
+  <body class="page__body">
+    <div class="site-container">
+      @include('partials/header.html')
+      <main class="main">
+        <section class="news-page">
+          <div class="container">
+            <div class="heading news-page__header">
+              <h1 class="h2 news-page__title">Новости</h1>
+            </div>
+
+            <div class="news-page__list">
+              <article class="news-page__item">
+                <div class="news-page__item-img">
+                  <picture>
+                    <source
+                      srcset="./img/news/01.webp"
+                      type="image/webp"
+                      media="(max-width: 576px)"
+                    />
+                    <img
+                      loading="lazy"
+                      src="./img/news/01.webp"
+                      class="image"
+                      width="760"
+                      height="250"
+                      alt=""
+                    />
+                  </picture>
+                </div>
+                <div class="news-page__item-content">
+                  <div class="news-page__item-text">
+                    <h3 class="news-page__item-title h4">
+                      <a href="#"
+                        >Завершено строительство складского комплекса по схеме
+                        Build-to-Suit</a
+                      >
+                    </h3>
+                    <p>
+                      Сдан объект, спроектированный под индивидуальные задачи
+                      заказчика: температурный режим, доковые зоны, нагрузки на
+                      полы.
+                    </p>
+                  </div>
+                  <time datetime="20.03.2026">20.03.2026</time>
+                </div>
+              </article>
+
+              <article class="news-page__item">
+                <div class="news-page__item-img">
+                  <picture>
+                    <source
+                      srcset="./img/news/02.webp"
+                      type="image/webp"
+                      media="(max-width: 576px)"
+                    />
+                    <img
+                      loading="lazy"
+                      src="./img/news/02.webp"
+                      class="image"
+                      width="760"
+                      height="250"
+                      alt=""
+                    />
+                  </picture>
+                </div>
+                <div class="news-page__item-content">
+                  <div class="news-page__item-text">
+                    <h3 class="news-page__item-title h4">
+                      <a href="#"
+                        >Выполнен монтаж технологического оборудования</a
+                      >
+                    </h3>
+                    <p>
+                      Завершены монтажные и пусконаладочные работы на
+                      производственной площадке заказчика.
+                    </p>
+                  </div>
+                  <time datetime="20.03.2026">20.03.2026</time>
+                </div>
+              </article>
+
+              <article class="news-page__item">
+                <div class="news-page__item-img">
+                  <picture>
+                    <source
+                      srcset="./img/news/03.webp"
+                      type="image/webp"
+                      media="(max-width: 576px)"
+                    />
+                    <img
+                      loading="lazy"
+                      src="./img/news/03.webp"
+                      class="image"
+                      width="760"
+                      height="250"
+                      alt=""
+                    />
+                  </picture>
+                </div>
+                <div class="news-page__item-content">
+                  <div class="news-page__item-text">
+                    <h3 class="news-page__item-title h4">
+                      <a href="#"
+                        >Расширены мощности собственного цеха
+                        металлоконструкций</a
+                      >
+                    </h3>
+                    <p>
+                      Увеличены производственные мощности по изготовлению
+                      металлоконструкций нестандартных форм.
+                    </p>
+                  </div>
+                  <time datetime="20.03.2026">20.03.2026</time>
+                </div>
+              </article>
+
+              <article class="news-page__item">
+                <div class="news-page__item-img">
+                  <picture>
+                    <source
+                      srcset="./img/news/04.webp"
+                      type="image/webp"
+                      media="(max-width: 576px)"
+                    />
+                    <img
+                      loading="lazy"
+                      src="./img/news/04.webp"
+                      class="image"
+                      width="760"
+                      height="250"
+                      alt=""
+                    />
+                  </picture>
+                </div>
+                <div class="news-page__item-content">
+                  <div class="news-page__item-text">
+                    <h3 class="news-page__item-title h4">
+                      <a href="#"
+                        >Специалисты компании подтвердили допуски по высотным и
+                        сварочным работам</a
+                      >
+                    </h3>
+                    <p>
+                      Пройдена аттестация НАКС и подтверждены допуски к высотным
+                      работам на объектах 1–4 класса опасности.
+                    </p>
+                  </div>
+                  <time datetime="20.03.2026">20.03.2026</time>
+                </div>
+              </article>
+            </div>
+
+            <div class="news-page__control">
+              <button class="btn btn_tri btn_dark news-page__btn">
+                показать ещё
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+      @include('partials/footer.html')
+    </div>
+  </body>
+</html>

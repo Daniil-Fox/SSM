@@ -213,3 +213,15 @@
     width: auto;
   }
 }
+
+.breadcrumbs {
+  margin: 0;
+  font-weight: 300;
+  font-size: 2.2rem;
+  line-height: 150%;
+  color: var(--grey4);
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
