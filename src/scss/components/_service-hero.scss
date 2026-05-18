@@ -1,0 +1,43 @@
+.service-hero {
+  overflow: hidden;
+  &__container {
+    display: flex;
+    min-height: 81.3rem;
+  }
+  &__content {
+    width: 100%;
+    max-width: 98rem;
+    display: flex;
+    flex-direction: column;
+  }
+  &__title {
+    font-size: 7rem;
+    margin-bottom: 4rem;
+  }
+  &__desc {
+    max-width: 75.2rem;
+  }
+  &__btn {
+    margin-top: auto;
+    max-width: 33rem;
+    width: 100%;
+  }
+
+  &__img {
+    flex-grow: 1;
+    margin-left: -20rem;
+
+    position: relative;
+    mask-image: url("./../img/service-page/mask.svg");
+    mask-size: auto 100%;
+    mask-repeat: no-repeat;
+    mask-position: left;
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
