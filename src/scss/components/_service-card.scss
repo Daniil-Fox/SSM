@@ -2,9 +2,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-
   min-height: 45.3rem;
   position: relative;
+  cursor: pointer;
   @include mobile {
     grid-template-columns: 1fr;
     min-height: unset;
@@ -38,11 +38,7 @@
     }
   }
 
-  &__title a::after {
-    content: "";
-    position: absolute;
-    z-index: 3;
-    inset: 0;
+  &__title {
   }
 
   @include hover {

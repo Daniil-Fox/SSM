@@ -138,3 +138,10 @@ section {
     padding: 7.5rem 0;
   }
 }
+
+.just-validate-error-label {
+  display: none;
+}
+.error {
+  border-color: #f00 !important;
+}

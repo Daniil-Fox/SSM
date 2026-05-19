@@ -232,6 +232,14 @@ section {
   }
 }
 
+.just-validate-error-label {
+  display: none;
+}
+
+.error {
+  border-color: #f00 !important;
+}
+
 .btn {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -1820,7 +1828,8 @@ a:active {
   top: 0;
   left: 0;
   width: 100%;
-  border: none;
+  border: 2px solid transparent;
+  border-radius: 1rem;
   background: none;
   -webkit-transition: background-color 0.3s ease-in, -webkit-transform 0.3s ease-in;
   transition: background-color 0.3s ease-in, -webkit-transform 0.3s ease-in;
@@ -2310,6 +2319,7 @@ a:active {
   gap: 2rem;
   min-height: 45.3rem;
   position: relative;
+  cursor: pointer;
 }
 @media (max-width: 576px) {
   .service-card {
@@ -2357,12 +2367,6 @@ a:active {
   top: 0;
   width: 100%;
   height: 100%;
-}
-.service-card__title a::after {
-  content: "";
-  position: absolute;
-  z-index: 3;
-  inset: 0;
 }
 @media (any-hover: hover) {
   .service-card:hover .service-card__img img {

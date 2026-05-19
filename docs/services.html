@@ -65,8 +65,8 @@
 
 
   <body class="page__body">
-    <div class="modal modal_service">
-  <div class="modal__body">
+    <div class="modal modal_service" data-modal="service">
+  <div class="modal__body modal__content">
     <div class="modal__header">
       <div class="modal__title h3">
         Пусконаладочные работы инженерных систем и оборудования
@@ -161,7 +161,95 @@
 </div>
 
     <div class="site-container">
-      <header class="header">
+      <div class="modal modal_cta" data-modal="cta">
+  <div class="modal__body modal__content">
+    <div class="cta__container">
+      <div class="cta__content">
+        <h2 class="cta__title">оставьте заявку</h2>
+        <p class="cta__subtitle">
+          Наш специалист свяжется с&nbsp;вами в&nbsp;течение рабочего дня
+        </p>
+        <p class="cta__text">
+          Расскажите про&nbsp;объект&nbsp;— мы&nbsp;предварительно оценим
+          стоимость и&nbsp;сроки, согласуем выезд инженера на&nbsp;площадку
+          и&nbsp;предоставим техническое предложение.
+        </p>
+
+        <form action="#" class="modal__form form">
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper">
+              <input
+                type="text"
+                class="form__input input-name"
+                name="Имя"
+                required
+              />
+              <div class="form__label">имя</div>
+            </label>
+          </div>
+
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper">
+              <input
+                type="text"
+                class="form__input input-tel-email"
+                name="контакт"
+                required
+              />
+              <div class="form__label">телефон или email</div>
+            </label>
+          </div>
+
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper">
+              <input type="text" class="form__input input-city" name="город" />
+              <div class="form__label">город</div>
+            </label>
+          </div>
+
+          <div class="form__field form__field--long">
+            <label class="form__field-wrapper form__field-wrapper--area">
+              <textarea
+                class="form__input form__input--area input-mess"
+                name="Сообщение"
+              ></textarea>
+              <div class="form__label">
+                краткое описание задачи (необязательно)
+              </div>
+            </label>
+          </div>
+          <button class="btn btn-reset btn--accent form__btn">
+            отправить заявку
+          </button>
+          <p class="form__extra">
+            Отправляя заявку, вы соглашаетесь с&nbsp;<a href="#" target="_blank"
+              >политикой обработки персональных данных</a
+            >.
+          </p>
+        </form>
+      </div>
+      <div class="cta__img">
+        <picture>
+          <source
+            srcset="./img/cta-mob.webp"
+            type="image/webp"
+            media="(max-width: 576px)"
+          />
+          <img
+            loading="lazy"
+            src="./img/cta.webp"
+            class="image"
+            width="1300"
+            height="800"
+            alt=""
+          />
+        </picture>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header class="header">
   <div class="container">
     <div class="header__container">
       <a href="/" class="header__logo">
@@ -228,10 +316,13 @@
     </p>
 
     <div class="services-main__items">
-      <article class="services-main__card service-card">
+      <article
+        class="services-main__card service-card"
+        data-service="commissioning"
+      >
         <div class="service-card__content">
           <h2 class="service-card__title h3">
-            <a href="#">Строительство складов разного назначения</a>
+            <a> Строительство складов разного назначения </a>
           </h2>
           <p class="btn-nomob">
             Проектируем и&nbsp;строим складские комплексы под&nbsp;конкретную
@@ -700,8 +791,9 @@
               <input
                 type="text"
                 class="form__input input-tel-email"
-                name="телефон или email"
+                name="контакт"
                 required
+                data-validate="email-or-phone"
               />
               <div class="form__label">телефон или email</div>
             </label>
@@ -725,7 +817,7 @@
               </div>
             </label>
           </div>
-          <button class="btn btn-reset btn--accent form__btn" disabled>
+          <button class="btn btn-reset btn--accent form__btn">
             отправить заявку
           </button>
           <p class="form__extra">

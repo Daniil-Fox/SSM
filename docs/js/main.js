@@ -5411,7 +5411,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_header_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/header.js */ "./src/js/components/header.js");
 /* harmony import */ var _components_inputs_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/inputs.js */ "./src/js/components/inputs.js");
 /* harmony import */ var _components_toggle_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/toggle.js */ "./src/js/components/toggle.js");
-/* harmony import */ var _functions_validate_forms_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./functions/validate-forms.js */ "./src/js/functions/validate-forms.js");
+/* harmony import */ var _components_modal_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/modal.js */ "./src/js/components/modal.js");
+/* harmony import */ var _functions_validate_forms_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./functions/validate-forms.js */ "./src/js/functions/validate-forms.js");
+
 
 
 
@@ -5437,6 +5439,56 @@ __webpack_require__.r(__webpack_exports__);
   htmlEl: document.documentElement,
   bodyEl: document.body
 });
+
+/***/ },
+
+/***/ "./src/js/components/accordion.js"
+/*!****************************************!*\
+  !*** ./src/js/components/accordion.js ***!
+  \****************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   mountAccordions: () => (/* binding */ mountAccordions)
+/* harmony export */ });
+function mountAccordions(parent = document) {
+  const accordions = parent.querySelectorAll(".accordeon");
+  accordions.forEach(accordion => {
+    const trigger = accordion.querySelector(".accordeon__trigger");
+    const body = accordion.querySelector(".accordeon__body");
+    if (!trigger || !body) return;
+
+    // защита от двойного mount
+
+    if (accordion.dataset.accordionReady) {
+      return;
+    }
+    accordion.dataset.accordionReady = "true";
+
+    // mobile default collapsed
+
+    if (window.innerWidth <= 768) {
+      body.style.height = "0px";
+    } else {
+      accordion.classList.add("active");
+      body.style.height = "auto";
+    }
+    trigger.addEventListener("click", () => {
+      // desktop disabled
+
+      if (window.innerWidth > 768) return;
+      const isOpen = accordion.classList.contains("active");
+      accordion.classList.toggle("active", !isOpen);
+      if (isOpen) {
+        body.style.height = "0px";
+      } else {
+        body.style.height = body.scrollHeight + "px";
+      }
+    });
+  });
+}
 
 /***/ },
 
@@ -5555,6 +5607,190 @@ const clearFields = () => {
     field.classList.remove("filled");
   });
 };
+
+/***/ },
+
+/***/ "./src/js/components/modal.js"
+/*!************************************!*\
+  !*** ./src/js/components/modal.js ***!
+  \************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ModalManager: () => (/* binding */ ModalManager)
+/* harmony export */ });
+/* harmony import */ var _service_modal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./service-modal.js */ "./src/js/components/service-modal.js");
+
+class ModalManager {
+  constructor() {
+    this.activeModal = null;
+    this.serviceModalElement = document.querySelector('[data-modal="service"]');
+    this.serviceModal = new _service_modal_js__WEBPACK_IMPORTED_MODULE_0__.ServiceModal(this.serviceModalElement);
+    this._bindEvents();
+  }
+  open(name) {
+    const modal = document.querySelector(`[data-modal="${name}"]`);
+    if (!modal) return;
+    this.close();
+    this.activeModal = modal;
+    modal.classList.add("active");
+    document.body.classList.add("modal-open");
+  }
+  close() {
+    if (!this.activeModal) return;
+    this.activeModal.classList.remove("active");
+    document.body.classList.remove("modal-open");
+    this.activeModal = null;
+  }
+  openService(serviceKey) {
+    const data = window.SERVICES?.[serviceKey];
+    if (!data) return;
+    this.serviceModal.render(data);
+    this.open("service");
+  }
+  _bindEvents() {
+    document.addEventListener("click", e => {
+      const serviceBtn = e.target.closest("[data-service]");
+      if (serviceBtn) {
+        e.preventDefault();
+        console.log("data");
+        this.openService(serviceBtn.dataset.service);
+        return;
+      }
+      const modalBtn = e.target.closest("[data-modal-open]");
+      if (modalBtn) {
+        e.preventDefault();
+        this.open(modalBtn.dataset.modalOpen);
+        return;
+      }
+      const closeBtn = e.target.closest("[data-modal-close]");
+      if (closeBtn) {
+        this.close();
+        return;
+      }
+      const modal = e.target.closest(".modal");
+      if (modal && e.target === modal) {
+        this.close();
+      }
+    });
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        this.close();
+      }
+    });
+  }
+}
+
+/***/ },
+
+/***/ "./src/js/components/service-modal.js"
+/*!********************************************!*\
+  !*** ./src/js/components/service-modal.js ***!
+  \********************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ServiceModal: () => (/* binding */ ServiceModal)
+/* harmony export */ });
+/* harmony import */ var _accordion_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./accordion.js */ "./src/js/components/accordion.js");
+
+class ServiceModal {
+  constructor(modalElement) {
+    this.modal = modalElement;
+    this.content = this.modal.querySelector(".modal__body");
+  }
+  render(serviceData) {
+    if (!serviceData) return;
+    this.content.innerHTML = this._template(serviceData);
+
+    // IMPORTANT
+    // после вставки HTML
+    // монтируем аккордеоны
+
+    (0,_accordion_js__WEBPACK_IMPORTED_MODULE_0__.mountAccordions)(this.modal);
+  }
+  clear() {
+    this.content.innerHTML = "";
+  }
+  _template(data) {
+    return `
+      <div class="modal__header">
+        <div class="modal__title h3">
+          ${data.title}
+        </div>
+
+        <button
+          class="btn-reset modal__close"
+          data-modal-close
+        >
+          <svg width="26" height="26">
+            <use xlink:href="img/sprite.svg#cross"></use>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal__content">
+        <div class="modal__desc">
+          ${data.description}
+        </div>
+
+        <div class="modal__cols">
+
+          ${this._accordion("Этапы работ", this._orderedList(data.steps))}
+
+          ${this._accordion("Закрываем типичные проблемы", this._unorderedList(data.problems))}
+
+        </div>
+      </div>
+
+      <div class="modal__bottom">
+        <button
+          class="btn btn_tri modal__btn"
+          data-modal-open="cta"
+        >
+          оставить заявку
+        </button>
+      </div>
+    `;
+  }
+  _accordion(title, content) {
+    return `
+      <div class="modal__step accordeon">
+
+        <div class="accordeon__trigger">
+          <p class="h4 accordeon__title">
+            ${title}
+          </p>
+        </div>
+
+        <div class="accordeon__body">
+          <div class="accordeon__content">
+            ${content}
+          </div>
+        </div>
+
+      </div>
+    `;
+  }
+  _orderedList(items = []) {
+    return `
+      <ol>
+        ${items.map(item => `<li>${item}</li>`).join("")}
+      </ol>
+    `;
+  }
+  _unorderedList(items = []) {
+    return `
+      <ul>
+        ${items.map(item => `<li>${item}</li>`).join("")}
+      </ul>
+    `;
+  }
+}
 
 /***/ },
 
@@ -5842,8 +6078,11 @@ const mobileCheck = () => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FormController: () => (/* binding */ FormController)
+/* harmony export */ });
 /* harmony import */ var just_validate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! just-validate */ "./node_modules/just-validate/dist/just-validate.es.js");
-/* harmony import */ var inputmask_dist_inputmask_es6_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! inputmask/dist/inputmask.es6.js */ "./node_modules/inputmask/dist/inputmask.es6.js");
+/* harmony import */ var _node_modules_inputmask_dist_inputmask_es6_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/inputmask/dist/inputmask.es6.js */ "./node_modules/inputmask/dist/inputmask.es6.js");
 /* harmony import */ var _components_inputs_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/inputs.js */ "./src/js/components/inputs.js");
 
 
@@ -5855,11 +6094,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /**
  * Определяет тип валидации для поля по его атрибутам.
- * @returns {'email'|'tel'|'text'}
+ * @returns {'email'|'tel'|'text'|'emailOrPhone'}
  */
 function getFieldValidationType(input) {
-  if (input.type === "email" || input.dataset.validate === "email") return "email";
-  if (input.type === "tel" || input.dataset.validate === "phone") return "tel";
+  if (input.dataset.validate === "email-or-phone" || input.dataset.validate === "phone-or-email") {
+    return "emailOrPhone";
+  }
+  if (input.type === "email" || input.dataset.validate === "email") {
+    return "email";
+  }
+  if (input.type === "tel" || input.dataset.validate === "phone") {
+    return "tel";
+  }
   return "text";
 }
 
@@ -5883,19 +6129,42 @@ function buildRulesForField(input) {
       errorMessage: "Заполните телефон!"
     }, {
       rule: "function",
-      // JustValidate v4: (значение поля, совместимые поля) — не (name, value)
       validator: elemValue => {
         const str = String(elemValue ?? "");
-        // Незаполненная позиция маски — номер неполный
         if (str.includes("_")) return false;
-        // 11 цифр для +7 (XXX) XXX-XX-XX
         return str.replace(/\D/g, "").length >= 11;
       },
       errorMessage: "Введите корректный номер телефона"
     }];
   }
 
-  // текст / textarea
+  /* ── EMAIL ИЛИ ТЕЛЕФОН ── */
+
+  if (type === "emailOrPhone") {
+    return [{
+      rule: "required",
+      errorMessage: "Введите email или телефон"
+    }, {
+      rule: "function",
+      validator: value => {
+        const str = String(value ?? "").trim();
+        if (!str) return false;
+
+        // PHONE
+        if (/^[\d+]/.test(str)) {
+          if (str.includes("_")) return false;
+          return str.replace(/\D/g, "").length >= 11;
+        }
+
+        // EMAIL
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str);
+      },
+      errorMessage: "Введите корректный email или телефон"
+    }];
+  }
+
+  // TEXT / TEXTAREA
+
   const rules = [];
   const minLen = parseInt(input.dataset.minLength ?? input.minLength, 10);
   if (minLen > 0) {
@@ -5913,45 +6182,42 @@ function buildRulesForField(input) {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   FormController — инкапсулирует логику одной формы
+   FormController
 ───────────────────────────────────────────────── */
 
 class FormController {
   /**
    * @param {HTMLFormElement} form
-   * @param {Function|null}   afterSend  — колбэк после успешной отправки
+   * @param {Function|null} afterSend
    */
   constructor(form, afterSend = null) {
     this.form = form;
     this.afterSend = afterSend;
     this.select = form.querySelector("select.select-contact");
     this.submitBtn = form.querySelector(".form__btn");
-
-    // Контейнер для динамического поля
     this.dynContainer = form.querySelector(".js-dynamic-contact") ?? this._createDynContainer();
-
-    // Состояние динамического поля
     this.dynInput = null;
     this.dynMask = null;
-
-    // Экземпляр JustValidate
     this.validator = null;
-
-    // Начальное состояние
-    if (this.submitBtn) this.submitBtn.disabled = true;
+    if (this.submitBtn) {
+      this.submitBtn.disabled = true;
+    }
     this._applySelectLongClass();
     this._applyStaticMasks();
     this._rebuildValidation();
     this._bindEvents();
   }
 
-  /* ── Маска на статические tel-поля (уже существующие в HTML) ── */
+  /* ──────────────────────────────────────────────────────────
+     STATIC MASKS
+  ───────────────────────────────────────────────── */
+
   _applyStaticMasks() {
     this.form.querySelectorAll("input[type='tel'][required]").forEach(input => {
-      if (input === this.dynInput) return; // динамическое поле — отдельно
-      if (input.dataset.masked) return; // не накидываем повторно
+      if (input === this.dynInput) return;
+      if (input.dataset.masked) return;
       input.dataset.masked = "1";
-      new inputmask_dist_inputmask_es6_js__WEBPACK_IMPORTED_MODULE_1__["default"]({
+      new _node_modules_inputmask_dist_inputmask_es6_js__WEBPACK_IMPORTED_MODULE_1__["default"]({
         mask: "+7 (999) 999-99-99",
         showMaskOnHover: false,
         showMaskOnFocus: true
@@ -5959,31 +6225,74 @@ class FormController {
     });
   }
 
-  /* ── Вспомогательный: контейнер для динамического поля ── */
+  /* ──────────────────────────────────────────────────────────
+     HYBRID EMAIL / PHONE
+  ───────────────────────────────────────────────── */
+
+  _detectEmailOrPhoneMode(value) {
+    const trimmed = String(value ?? "").trim();
+    if (!trimmed) return null;
+
+    // начинается с цифры или +
+    if (/^[\d+]/.test(trimmed)) {
+      return "tel";
+    }
+    return "email";
+  }
+  _toggleHybridMask(input) {
+    if (!input) return;
+    const type = getFieldValidationType(input);
+    if (type !== "emailOrPhone") return;
+    const value = input.value.trim();
+    const isPhone = /^[\d+]/.test(value);
+
+    // PHONE
+    if (isPhone) {
+      if (!input.inputmask) {
+        new _node_modules_inputmask_dist_inputmask_es6_js__WEBPACK_IMPORTED_MODULE_1__["default"]({
+          mask: "+7 (999) 999-99-99",
+          showMaskOnHover: false,
+          showMaskOnFocus: true
+        }).mask(input);
+
+        // если пользователь начал с 9
+        if (/^\d/.test(value)) {
+          input.inputmask.setValue(`+7 ${value}`);
+        }
+      }
+    } else {
+      // EMAIL
+      if (input.inputmask) {
+        input.inputmask.remove();
+      }
+    }
+  }
+
+  /* ──────────────────────────────────────────────────────────
+     DYNAMIC FIELD
+  ───────────────────────────────────────────────── */
+
   _createDynContainer() {
-    if (!this.form.querySelector("select")) return;
     const div = document.createElement("div");
     div.className = "js-dynamic-contact";
     const anchor = this.select?.closest(".form__field");
-    if (anchor) anchor.after(div);else this.form.insertBefore(div, this.submitBtn?.closest(".form__row") ?? this.submitBtn);
+    if (anchor) {
+      anchor.after(div);
+    } else {
+      this.form.insertBefore(div, this.submitBtn?.closest(".form__row") ?? this.submitBtn);
+    }
     return div;
   }
-
-  /* ── form__field--long на контейнере селекта ── */
   _applySelectLongClass() {
     const selectField = this.select?.closest(".form__field");
     if (!selectField) return;
     selectField.classList.toggle("form__field--long", !this.select.value);
   }
-
-  /* ── Тип контакта из селекта: 'email' | 'tel' | null ── */
   _getContactType() {
     const val = this.select?.value ?? "";
     if (!val) return null;
     return /mail/i.test(val) ? "email" : "tel";
   }
-
-  /* ── Создаём динамическое поле ── */
   _buildDynamicField(contactType) {
     this._destroyDynField();
     if (!contactType) return;
@@ -6007,10 +6316,8 @@ class FormController {
     wrapper.appendChild(innerWrapper);
     this.dynContainer.appendChild(wrapper);
     this.dynInput = input;
-
-    // Маска только для телефона
     if (!isEmail) {
-      this.dynMask = new inputmask_dist_inputmask_es6_js__WEBPACK_IMPORTED_MODULE_1__["default"]({
+      this.dynMask = new _node_modules_inputmask_dist_inputmask_es6_js__WEBPACK_IMPORTED_MODULE_1__["default"]({
         mask: "+7 (999) 999-99-99",
         showMaskOnHover: false,
         showMaskOnFocus: true
@@ -6018,8 +6325,6 @@ class FormController {
       this.dynMask.mask(input);
     }
   }
-
-  /* ── Уничтожаем динамическое поле ── */
   _destroyDynField() {
     if (this.dynMask) {
       this.dynMask.remove();
@@ -6029,9 +6334,14 @@ class FormController {
     this.dynContainer.innerHTML = "";
   }
 
-  /* ── Получить уникальный CSS-селектор для элемента (для JustValidate) ── */
+  /* ──────────────────────────────────────────────────────────
+     VALIDATION
+  ───────────────────────────────────────────────── */
+
   _uniqueSelector(el) {
-    if (el.id) return `#${el.id}`;
+    if (el.id) {
+      return `#${el.id}`;
+    }
     if (el.name) {
       const formId = this.form.id;
       return formId ? `#${formId} [name="${el.name}"]` : `[name="${el.name}"]`;
@@ -6040,15 +6350,11 @@ class FormController {
     el.id = id;
     return `#${id}`;
   }
-
-  /* ── Пересоздать JustValidate со всеми актуальными полями ── */
   _rebuildValidation() {
     if (this.validator) {
       try {
         this.validator.destroy();
-      } catch (_) {
-        /* ignore */
-      }
+      } catch (_) {}
       this.validator = null;
     }
     const validator = new just_validate__WEBPACK_IMPORTED_MODULE_0__["default"](this.form, {
@@ -6059,27 +6365,19 @@ class FormController {
       errorLabelStyle: {},
       errorFieldStyle: {}
     });
-
-    // 1. Статические required-поля
     const staticInputs = Array.from(this.form.querySelectorAll("input[required], textarea[required]")).filter(el => el !== this.dynInput);
     for (const input of staticInputs) {
       validator.addField(this._uniqueSelector(input), buildRulesForField(input));
     }
-
-    // 2. Обязательный выбор в <select>
     if (this.select) {
       validator.addField(this._uniqueSelector(this.select), [{
         rule: "required",
         errorMessage: "Выберите способ связи!"
       }]);
     }
-
-    // 3. Динамическое поле (если создано)
     if (this.dynInput) {
       validator.addField(this._uniqueSelector(this.dynInput), buildRulesForField(this.dynInput));
     }
-
-    // 4. Обновление классов error на form__field и состояния кнопки
     validator.onValidate(({
       isValid,
       fields
@@ -6089,19 +6387,19 @@ class FormController {
         if (!wrapper) continue;
         wrapper.classList.toggle("error", !fieldState.isValid);
       }
-      if (this.submitBtn) this.submitBtn.disabled = !isValid;
+      if (this.submitBtn) {
+        this.submitBtn.disabled = !isValid;
+      }
     });
-
-    // 5. Успешная отправка
     validator.onSuccess(async ev => {
       const formEl = ev?.currentTarget ?? ev?.target ?? this.form;
       const formDataMax = typeof globalThis.MaxFormCollector !== "undefined" ? globalThis.MaxFormCollector.collect(this.form) : Object.fromEntries(new FormData(this.form).entries());
       const ts = new Date().toLocaleString("ru-RU");
       const text = `**Заявка с сайта Перемена**\n_${ts}_\n\n` + Object.entries(formDataMax).map(([k, v]) => `**${k}:** ${v}`).join("\n") + `\n\n_Сайт: ${location.hostname}_`;
-
-      // Вешаем класс отправки — CSS покажет спиннер/блокировку
       this.form.classList.add("form--sending");
-      if (this.submitBtn) this.submitBtn.disabled = true;
+      if (this.submitBtn) {
+        this.submitBtn.disabled = true;
+      }
       try {
         let phpResult;
         if (typeof globalThis.MaxFormCollector !== "undefined") {
@@ -6110,7 +6408,7 @@ class FormController {
             source: "peremena"
           })]);
         } else {
-          console.error("[Form] MaxFormCollector не найден — заявка не отправлена (подключите скрипт темы)");
+          console.error("[Form] MaxFormCollector не найден");
           phpResult = {
             status: "fulfilled",
             value: {
@@ -6118,89 +6416,108 @@ class FormController {
             }
           };
         }
-
-        // Колбэк afterSend — только если PHP ответил успешно
         if (phpResult.status === "fulfilled" && phpResult.value?.ok) {
-          if (this.afterSend) this.afterSend();
+          if (this.afterSend) {
+            this.afterSend();
+          }
         }
       } catch (err) {
         console.error("[Form] Ошибка отправки:", err);
       } finally {
-        // Снимаем состояние загрузки в любом случае
         this.form.classList.remove("form--sending");
-
-        // Сброс формы
         this.form.querySelectorAll(".filled, .error").forEach(el => {
           el.classList.remove("filled", "error");
         });
         formEl.reset();
-
-        // Закрываем модалку и чистим поля
         setTimeout(() => {
           const modal = document.querySelector(".modal.active");
-          if (modal) modal.classList.remove("active");
+          if (modal) {
+            modal.classList.remove("active");
+          }
           (0,_components_inputs_js__WEBPACK_IMPORTED_MODULE_2__.clearFields)();
         }, 0);
-        this._handleSelectChange(); // убираем динамическое поле после сброса
+        this._handleSelectChange();
       }
     });
     this.validator = validator;
     this._checkButtonState();
   }
 
-  /* ── Проверка кнопки вручную (без показа ошибок) ── */
+  /* ──────────────────────────────────────────────────────────
+     BUTTON STATE
+  ───────────────────────────────────────────────── */
+
   _checkButtonState() {
     if (!this.submitBtn) return;
     this.submitBtn.disabled = !this._allRequiredValid();
   }
-
-  /* ── Ручная валидность всех required полей ── */
   _allRequiredValid() {
-    // Если селект есть — он должен быть выбран
-    if (this.select && !this.select.value) return false;
-
-    // Статические поля
+    if (this.select && !this.select.value) {
+      return false;
+    }
     const staticOk = Array.from(this.form.querySelectorAll("input[required], textarea[required]")).filter(el => el !== this.dynInput).every(el => this._isValueValid(el));
-
-    // Динамическое поле — обязательно только если оно создано
     const dynOk = this.dynInput ? this._isValueValid(this.dynInput) : true;
     return staticOk && dynOk;
   }
   _isValueValid(input) {
     const type = getFieldValidationType(input);
     const value = input.value ?? "";
-    if (type === "email") return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    if (type === "email") {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
     if (type === "tel") {
       const str = String(value ?? "");
       if (str.includes("_")) return false;
       return str.replace(/\D/g, "").length >= 11;
     }
+    if (type === "emailOrPhone") {
+      const mode = this._detectEmailOrPhoneMode(value);
+
+      // EMAIL
+      if (mode === "email") {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      }
+
+      // PHONE
+      if (mode === "tel") {
+        const str = String(value ?? "");
+        if (str.includes("_")) return false;
+        return str.replace(/\D/g, "").length >= 11;
+      }
+      return false;
+    }
     const minLen = parseInt(input.dataset.minLength ?? input.minLength, 10) || 1;
     return value.trim().length >= minLen;
   }
 
-  /* ── Обновление класса filled ── */
+  /* ──────────────────────────────────────────────────────────
+     UI
+  ───────────────────────────────────────────────── */
+
   _updateFilled(input) {
     const wrapper = input.closest(".form__field");
     if (!wrapper) return;
     wrapper.classList.toggle("filled", input.value.length > 0);
   }
-
-  /* ── Обработка изменения селекта ── */
   _handleSelectChange() {
     this._applySelectLongClass();
     this._buildDynamicField(this._getContactType());
     this._rebuildValidation();
   }
 
-  /* ── Делегированные события на уровне формы ── */
+  /* ──────────────────────────────────────────────────────────
+     EVENTS
+  ───────────────────────────────────────────────── */
+
   _bindEvents() {
-    // input  — стандартный ввод и автозаполнение
-    // keyup  — Inputmask обновляет .value до keyup, но может не стрелять input
-    // paste  — вставка из буфера
     const onInput = e => {
       const el = e.target;
-      if (el.tagName !== "INPUT" && el.tagName !== "TEXTAREA") return;
+      if (el.tagName !== "INPUT" && el.tagName !== "TEXTAREA") {
+        return;
+      }
+
+      // HYBRID EMAIL/PHONE
+      this._toggleHybridMask(el);
       this._updateFilled(el);
       this._checkButtonState();
     };
@@ -6220,41 +6537,6 @@ class FormController {
     });
   }
 }
-
-/* ─────────────────────────────────────────────────────────────
-   ТОЧКА ВХОДА
-───────────────────────────────────────────────── */
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Все формы на странице (не только первая по селектору)
-  document.querySelectorAll("[data-js-validate-form], form.cta__form").forEach(form => {
-    new FormController(form);
-  });
-
-  // Открытие модального окна
-  document.querySelectorAll(".modal-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelector(".modal")?.classList.add("active");
-    });
-  });
-
-  // Закрытие модального окна
-  const modal = document.querySelector(".modal");
-  if (modal) {
-    modal.addEventListener("click", e => {
-      const content = modal.querySelector(".modal__content");
-      if (e.target === modal || !content?.contains(e.target)) {
-        modal.classList.remove("active");
-      }
-    });
-    modal.querySelectorAll(".modal__close").forEach(btn => {
-      btn.addEventListener("click", e => {
-        e.preventDefault();
-        modal.classList.remove("active");
-      });
-    });
-  }
-});
 
 /***/ },
 
@@ -10886,7 +11168,39 @@ var __webpack_exports__ = {};
   \************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_components.js */ "./src/js/_components.js");
+/* harmony import */ var _functions_validate_forms_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./functions/validate-forms.js */ "./src/js/functions/validate-forms.js");
+/* harmony import */ var _components_modal_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/modal.js */ "./src/js/components/modal.js");
 
+
+
+window.SERVICES = {
+  commissioning: {
+    title: "Пусконаладочные работы инженерных систем и оборудования",
+    description: `
+      <p>
+        Запуск, настройка и сдача в эксплуатацию
+        инженерных систем.
+      </p>
+    `,
+    steps: ["Ревизия монтажа", "Подача напряжения", "Поузловые испытания"],
+    problems: ["Отказ в допуске", "Несрабатывание автоматики", "Скрытые дефекты монтажа"]
+  }
+};
+document.addEventListener("DOMContentLoaded", () => {
+  /* ─────────────────────────────────────────────
+     FORMS
+  ───────────────────────────────────────────── */
+
+  document.querySelectorAll("[data-js-validate-form], form.cta__form, form.modal__form").forEach(form => {
+    new _functions_validate_forms_js__WEBPACK_IMPORTED_MODULE_1__.FormController(form);
+  });
+
+  /* ─────────────────────────────────────────────
+     MODALS
+  ───────────────────────────────────────────── */
+
+  new _components_modal_js__WEBPACK_IMPORTED_MODULE_2__.ModalManager();
+});
 })();
 
 /******/ })()
