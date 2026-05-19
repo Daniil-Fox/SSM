@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru" class="page">
+  @include('partials/head.html')
+
+  <body class="page__body">
+    <div class="site-container">
+      @include('partials/header.html')
+      <main class="main">
+        <section class="released">
+          <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+            <div class="container">
+              <span>
+                <span><a href="#">Главная</a></span>
+                &gt;
+                <span class="breadcrumb_last" aria-current="page">Проекты</span>
+              </span>
+            </div>
+          </nav>
+          <div class="container">
+            <h1 class="h2 released__title heading">реализованные проекты</h1>
+
+            <div class="released__grid">
+              <article class="released__card">
+                <div class="released__card-img">
+                  <picture>
+                    <source
+                      srcset="./img/projects/cover1-mob.webp"
+                      type="image/webp"
+                      media="(max-width: 576px)"
+                    />
+                    <img
+                      loading="lazy"
+                      src="./img/projects/cover1.webp"
+                      class="image"
+                      width="860"
+                      height="646"
+                      alt=""
+                    />
+                  </picture>
+                </div>
+                <div class="released__card-content">
+                  <h3 class="released__card-title">
+                    <a href="#"> Судостроительный кластер «Звезда» </a>
+                  </h3>
+                </div>
+              </article>
+              <article class="released__card">
+                <div class="released__card-img">
+                  <picture>
+                    <source
+                      srcset="./img/projects/cover2-mob.webp"
+                      type="image/webp"
+                      media="(max-width: 576px)"
+                    />
+                    <img
+                      loading="lazy"
+                      src="./img/projects/cover2.webp"
+                      class="image"
+                      width="860"
+                      height="646"
+                      alt=""
+                    />
+                  </picture>
+                </div>
+                <div class="released__card-content">
+                  <h3 class="released__card-title">
+                    <a href="#"> Efes </a>
+                  </h3>
+                </div>
+              </article>
+              <article class="released__card">
+                <div class="released__card-img">
+                  <picture>
+                    <source
+                      srcset="./img/projects/cover3-mob.webp"
+                      type="image/webp"
+                      media="(max-width: 576px)"
+                    />
+                    <img
+                      loading="lazy"
+                      src="./img/projects/cover3.webp"
+                      class="image"
+                      width="860"
+                      height="646"
+                      alt=""
+                    />
+                  </picture>
+                </div>
+                <div class="released__card-content">
+                  <h3 class="released__card-title">
+                    <a href="#"> Примтеплоэнерго </a>
+                  </h3>
+                </div>
+              </article>
+              <article class="released__card">
+                <div class="released__card-img">
+                  <picture>
+                    <source
+                      srcset="./img/projects/cover4-mob.webp"
+                      type="image/webp"
+                      media="(max-width: 576px)"
+                    />
+                    <img
+                      loading="lazy"
+                      src="./img/projects/cover4.webp"
+                      class="image"
+                      width="860"
+                      height="646"
+                      alt=""
+                    />
+                  </picture>
+                </div>
+                <div class="released__card-content">
+                  <h3 class="released__card-title">
+                    <a href="#"> DelCar </a>
+                  </h3>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+        @include('partials/cta.html')
+      </main>
+      @include('partials/footer.html')
+    </div>
+  </body>
+</html>
