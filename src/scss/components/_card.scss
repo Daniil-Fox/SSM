@@ -1,0 +1,68 @@
+.card {
+  &__img {
+    border-radius: 2rem;
+    overflow: hidden;
+    height: 40rem;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__content {
+    padding-top: 2rem;
+  }
+
+  &__title {
+    margin-bottom: 1.2rem;
+
+    a {
+      color: inherit;
+
+      transition: color 0.3s ease-in;
+
+      @include hover {
+        color: var(--red);
+      }
+      &:focus-visible {
+        outline: none;
+        color: var(--red);
+      }
+      &:active {
+        color: var(--red);
+      }
+    }
+  }
+  &__subtitle {
+    font-size: 2.4rem;
+    font-weight: 500;
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &_news &__title {
+    text-transform: initial;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 2.4rem;
+  }
+  &_service &__title {
+    text-transform: initial;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 2.4rem;
+  }
+  &_news &__img {
+    height: 28rem;
+  }
+
+  time {
+    display: block;
+    font-weight: 300;
+    font-size: 2.2rem;
+    line-height: 150%;
+    color: var(--grey4);
+  }
+}

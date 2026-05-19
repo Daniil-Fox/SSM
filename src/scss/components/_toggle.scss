@@ -1,0 +1,33 @@
+[data-toggle-text] {
+  transition: max-height 300ms ease-out;
+  overflow: hidden;
+}
+[data-toggle-text].is-clamped {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: var(--line-clamp, 6);
+}
+.toggle-btn-universal {
+  display: block;
+  border: none;
+  background: none;
+  text-align: center;
+  width: 100%;
+  font-weight: 600;
+  font-size: 2.2rem;
+  line-height: 150%;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+@media (hover: hover) {
+  .toggle-btn-universal:hover {
+    color: var(--red, #f30c1b);
+  }
+}
+.toggle-btn-universal:focus-visible {
+  color: var(--red, #f30c1b);
+}
+.toggle-btn-universal:active {
+  color: var(--red, #f30c1b);
+}

@@ -1,0 +1,70 @@
+.location {
+  &__container {
+    display: flex;
+    gap: 9.5rem;
+
+    @include mobile {
+      flex-direction: column;
+      padding-left: var(--container-offset);
+      gap: 0;
+    }
+  }
+
+  &__content {
+    flex-grow: 1;
+  }
+  &__img {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 99rem;
+    min-height: 82rem;
+    position: relative;
+    mask-image: url("./../img/location/mask.svg");
+    mask-size: auto 100%;
+    mask-position: right;
+    mask-repeat: no-repeat;
+
+    @include mobile {
+      margin-left: calc(-1 * var(--container-offset));
+      min-height: 39rem;
+      max-width: 100%;
+      mask-image: url("./../img/location/mask-mob.svg");
+      margin-bottom: 6rem;
+    }
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title,
+  &__subtitle {
+    &:not(:last-child) {
+      margin-bottom: 4.5rem;
+    }
+  }
+
+  &__desc {
+    &:not(:last-child) {
+      margin-bottom: 6rem;
+    }
+  }
+
+  &__btn {
+    margin-top: auto;
+    max-width: 37rem;
+    width: 100%;
+
+    @include mobile {
+      max-width: calc(100% - 5rem);
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.reasons {
+  overflow: hidden;
+
+  &__grid {
+    overflow: visible;
+  }
+  &__grid .swiper-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+
+    @include mobile {
+      flex-wrap: nowrap;
+      gap: unset;
+    }
+  }
+
+  &__grid .swiper-slide {
+    flex-basis: calc(33.333% - 8rem);
+    flex-grow: 1;
+    width: auto;
+    height: auto;
+    @include mobile {
+      width: 100%;
+      height: auto;
+      flex-grow: unset;
+      flex-basis: unset;
+    }
+  }
+}
+
+.reas {
+  height: 100%;
+  padding: 4.4rem;
+  background-color: #f7f7f7;
+  border-radius: 2rem;
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+}

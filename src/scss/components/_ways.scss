@@ -1,0 +1,55 @@
+.ways {
+  &__grid {
+    --cards-in-row: 3;
+    --gap: 4rem;
+
+    &_4 {
+      --cards-in-row: 4;
+    }
+
+    &_2 {
+      --cards-in-row: 2;
+    }
+
+    @include mobile {
+      --gap: 2rem;
+    }
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__card {
+    flex-basis: calc(
+      100% / var(--cards-in-row) - calc(var(--gap) * (var(--cards-in-row) - 1))
+    );
+    flex-grow: 1;
+  }
+}
+
+.way-card {
+  min-height: 37rem;
+  padding: 5rem;
+  border-radius: 2rem;
+  background-color: #f7f7f7;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3rem;
+  @include mobile {
+    min-height: unset;
+  }
+  &__title {
+    @include mobile {
+      font-family: var(--font-family);
+      text-transform: initial;
+      font-size: 2.4rem;
+    }
+  }
+}

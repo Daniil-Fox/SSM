@@ -1,0 +1,30 @@
+.storage {
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    @include mobile {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  &__card {
+    flex-basis: calc(25% - 12rem);
+    flex-grow: 1;
+
+    @include mobile {
+      flex-basis: 100%;
+      flex-grow: unset;
+    }
+  }
+}
+
+.storage-card {
+  padding: 5rem;
+  background-color: #f7f7f7;
+  border-radius: 2rem;
+  &__title {
+    margin-bottom: 3rem;
+  }
+}

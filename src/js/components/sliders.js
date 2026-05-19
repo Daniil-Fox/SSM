@@ -106,4 +106,9 @@ window.addEventListener("DOMContentLoaded", () => {
     slidesPerView: 1.2,
     spaceBetween: 20,
   });
+
+  resizableSwiper("(max-width: 576px)", ".reasons__grid", {
+    slidesPerView: 1.1,
+    spaceBetween: 20,
+  });
 });

@@ -12,7 +12,14 @@
   }
   &__title {
     font-size: 7rem;
-    margin-bottom: 4rem;
+    &:not(:last-child) {
+      margin-bottom: 4rem;
+    }
+  }
+  &__header {
+    margin-bottom: 5rem;
+  }
+  &__subtitle {
   }
   &__desc {
     max-width: 75.2rem;
