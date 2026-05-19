@@ -2774,4 +2774,103 @@ a:active {
     -ms-transform: scale(1.05);
     transform: scale(1.05);
   }
+}
+
+.contacts__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 6rem;
+}
+@media (max-width: 576px) {
+  .contacts__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+}
+.contacts__content {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 58.5rem;
+}
+@media (max-width: 576px) {
+  .contacts__content {
+    padding: 5rem;
+    border-radius: 2rem;
+    background-color: #f7f7f7;
+  }
+}
+.contacts__title {
+  margin-bottom: 5rem;
+}
+@media (max-width: 576px) {
+  .contacts__title {
+    -webkit-box-ordinal-group: 6;
+    -ms-flex-order: 5;
+    order: 5;
+    margin-bottom: 2.4rem;
+  }
+}
+.contacts__map {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  min-height: 80rem;
+  background-color: #ccc;
+  border-radius: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+.contacts__map > * {
+  position: absolute !important;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+@media (max-width: 576px) {
+  .contacts__map {
+    min-height: 44rem;
+  }
+}
+
+.contacts__data {
+  font-style: normal;
+}
+.contacts__data * {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+@media (max-width: 576px) {
+  .contacts__data * {
+    font-weight: 300;
+  }
+}
+.contacts__data-item:not(:last-child) {
+  margin-bottom: 5rem;
+}
+@media (max-width: 576px) {
+  .contacts__data-item:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+.contacts__data-item:not(:last-child) p:not(:last-child) {
+  margin-bottom: 0.2em;
+}
+
+.marker-container {
+  display: block;
+  background-image: url("./../img/svg/placemark.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 8rem;
+  height: 8rem;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }/*# sourceMappingURL=main.css.map */

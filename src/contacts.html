@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru" class="page">
+  @include('partials/head.html')
+
+  <body class="page__body">
+    <div class="site-container">
+      @include('partials/header.html')
+      <main class="main">
+        <section class="contacts">
+          <div class="container">
+            <div class="contacts__container">
+              <div class="h2 contacts__title btn-mob">контакты</div>
+              <div class="contacts__content">
+                <h1 class="h2 contacts__title btn-nomob">контакты</h1>
+                <address class="contacts__data">
+                  <div class="contacts__data-item">
+                    <p>
+                      <a href="tel:+79510220999">+7 951 022 09 99</a>
+                    </p>
+                    <p>
+                      <a href="tel:+74232275327">+7 423 227 53 27</a>
+                    </p>
+                  </div>
+                  <div class="contacts__data-item">
+                    <p>
+                      <a href="mailto:specstroymon@yandex. ru"
+                        >specstroymon@yandex. ru</a
+                      >
+                    </p>
+                  </div>
+                  <div class="contacts__data-item">
+                    <p>
+                      690080, Приморский край, г.&nbsp;Владивосток,
+                      ул.&nbsp;Добровольского, д.&nbsp;5, помещение&nbsp;5
+                    </p>
+                  </div>
+                  <div class="contacts__data-item">
+                    <p>ООО&nbsp;«СпецСтройМонтаж»</p>
+                  </div>
+                </address>
+              </div>
+
+              <div class="contacts__map" id="map"></div>
+            </div>
+          </div>
+        </section>
+        @include('partials/cta.html')
+      </main>
+      @include('partials/footer.html')
+    </div>
+
+    <script>
+      window.map = null;
+      const coords = [131.973026, 43.092452];
+      main();
+      async function main() {
+        await ymaps3.ready;
+        const {
+          YMap,
+          YMapDefaultSchemeLayer,
+          YMapDefaultFeaturesLayer,
+          YMapMarker,
+        } = ymaps3;
+
+        const marker = (feature) => {
+          const markerContainer = document.createElement("div");
+          markerContainer.classList.add("marker-container");
+
+          return new YMapMarker(
+            {
+              coordinates: coords,
+            },
+            markerContainer,
+          );
+        };
+
+        map = new YMap(
+          document.getElementById("map"),
+          {
+            location: {
+              center: coords,
+              zoom: 17,
+            },
+            showScaleInCopyrights: true,
+          },
+          [new YMapDefaultSchemeLayer({}), new YMapDefaultFeaturesLayer({})],
+        );
+        map.addChild(marker());
+      }
+    </script>
+  </body>
+</html>
