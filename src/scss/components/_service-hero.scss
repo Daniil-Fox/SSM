@@ -3,6 +3,14 @@
   &__container {
     display: flex;
     min-height: 81.3rem;
+    @include mobile {
+      min-height: unset;
+    }
+  }
+  .container {
+    @include mobile {
+      padding-right: var(--container-offset);
+    }
   }
   &__content {
     width: 100%;
@@ -11,13 +19,20 @@
     flex-direction: column;
   }
   &__title {
+    max-width: 84rem;
     font-size: 6rem;
     &:not(:last-child) {
       margin-bottom: 4rem;
     }
+    @include mobile {
+      font-size: 3.6rem;
+    }
   }
   &__header {
     margin-bottom: 5rem;
+    @include mobile {
+      margin-bottom: 3rem;
+    }
   }
   &__subtitle {
     max-width: 75.2rem;
@@ -29,6 +44,9 @@
     margin-top: auto;
     max-width: 33rem;
     width: 100%;
+    @include mobile {
+      max-width: calc(100% - 5rem);
+    }
   }
 
   &__img {
@@ -40,12 +58,47 @@
     mask-size: auto 100%;
     mask-repeat: no-repeat;
     mask-position: left;
+    @include mobile {
+      mask-size: auto 100%;
+      mask-repeat: no-repeat;
+      flex-grow: unset;
+      mask-position: left;
+      margin-left: 0;
+      height: 39rem;
+      margin-right: calc(-1 * var(--container-offset));
+
+      mask-image: url("./../img/spec/spec-mask.svg");
+
+      &:not(:last-child) {
+        margin-bottom: 4rem;
+      }
+    }
     img {
       position: absolute;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
+    }
+  }
+
+  &__link {
+    margin-top: auto;
+    font-family: var(--second-family);
+    font-weight: 500;
+    font-size: 3rem;
+    line-height: 140%;
+    text-transform: uppercase;
+    color: var(--grey4);
+    @include mobile {
+      margin-top: unset;
+    }
+    a {
+      color: inherit;
+
+      @include hover {
+        color: var(--red);
+      }
     }
   }
 }
