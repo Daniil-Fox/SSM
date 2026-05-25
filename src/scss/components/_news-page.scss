@@ -80,3 +80,98 @@
     max-width: 30rem;
   }
 }
+
+.news-page__btn-inner {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+}
+.news-page__btn-text {
+  -webkit-transition:
+    opacity 0.2s ease,
+    -webkit-transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    -webkit-transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    -webkit-transform 0.2s ease;
+}
+.news-page__btn-spinner {
+  position: absolute;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 0.2rem solid rgba(255, 255, 255, 0.28);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-transform: scale(0.85);
+  -ms-transform: scale(0.85);
+  transform: scale(0.85);
+  -webkit-transition:
+    opacity 0.2s ease,
+    -webkit-transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    -webkit-transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    -webkit-transform 0.2s ease;
+  -webkit-animation: ssm-spin 0.7s linear infinite;
+  animation: ssm-spin 0.7s linear infinite;
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+.news-page__btn.is-loading {
+  pointer-events: none;
+}
+.news-page__btn.is-loading .news-page__btn-text {
+  opacity: 0;
+  -webkit-transform: translateY(0.4rem);
+  -ms-transform: translateY(0.4rem);
+  transform: translateY(0.4rem);
+}
+.news-page__btn.is-loading .news-page__btn-spinner {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
+}
+@-webkit-keyframes ssm-spin {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes ssm-spin {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .news-page__btn-spinner {
+    -webkit-animation: none;
+    animation: none;
+    border-color: currentColor;
+    border-top-color: transparent;
+    opacity: 0.55;
+  }
+}

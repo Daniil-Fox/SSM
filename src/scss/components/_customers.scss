@@ -1,0 +1,30 @@
+.customers {
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  &__item {
+    height: 26.4rem;
+    border-radius: 2rem;
+    background-color: #f7f7f7;
+    padding: 6rem;
+    flex-basis: calc(20% - 6rem);
+    flex-grow: 1;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include mobile {
+      flex-basis: calc(50% - 2rem);
+    }
+    img {
+      display: block;
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+  }
+}

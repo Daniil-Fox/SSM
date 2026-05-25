@@ -4,3 +4,4 @@ import "./components/inputs.js";
 import "./components/toggle.js";
 import "./components/modal.js";
 import "./functions/validate-forms.js";
+import "./functions/burger.js";

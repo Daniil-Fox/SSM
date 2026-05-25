@@ -1,0 +1,41 @@
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+  &__overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  &__body {
+    background-color: var(--white);
+    padding: 3rem;
+    padding-top: 14rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+    transform: translateY(-100%);
+
+    transition: transform 0.3s ease;
+  }
+
+  &.menu--active {
+    pointer-events: all;
+  }
+  &.menu--active &__body {
+    transform: translateY(0);
+  }
+  &.menu--active &__overlay {
+    opacity: 1;
+  }
+}

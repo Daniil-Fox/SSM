@@ -81,6 +81,11 @@
   &:disabled {
     background-color: var(--grey2);
     color: var(--grey3);
+
+    &::after,
+    &::before {
+      background-color: var(--grey2);
+    }
   }
 
   &_dark {

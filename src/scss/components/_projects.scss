@@ -20,7 +20,9 @@
   }
   &__card {
     .card__img {
-      height: 28rem;
+      @include mobile {
+        height: 40rem;
+      }
     }
     .card__title {
       margin-bottom: 1rem;

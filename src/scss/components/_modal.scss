@@ -57,11 +57,16 @@
   }
   &__body {
     margin: auto;
+    overflow: hidden;
+    position: relative;
     width: 100%;
     max-width: var(--content-width);
     background-color: var(--white);
     padding: 8rem;
     border-radius: 2rem;
+    @include mobile {
+      padding: 3rem;
+    }
   }
 
   &__title {
@@ -131,5 +136,84 @@
       flex-grow: 1;
       max-width: calc(100% - 5rem);
     }
+  }
+}
+
+.modal_cta .cta__img {
+  margin-right: -8rem;
+  @include mobile {
+    margin-right: -6rem;
+    margin-top: -3rem;
+  }
+}
+
+.modal_cta .modal__close {
+  position: absolute;
+  top: 2rem;
+  z-index: 4;
+  right: 2rem;
+
+  @include mobile {
+    color: var(--white);
+  }
+}
+
+.modal_success {
+  .modal__body {
+    max-width: 48rem;
+    padding: 5rem 4rem 4rem;
+    text-align: center;
+
+    @include mobile {
+      padding: 4rem 3rem 3rem;
+    }
+  }
+
+  .modal__close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+}
+
+.modal-success {
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7.2rem;
+    height: 7.2rem;
+    margin: 0 auto 3rem;
+    border-radius: 50%;
+    background-color: rgba(243, 12, 27, 0.08);
+    color: var(--red);
+  }
+
+  &__check {
+    display: block;
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+
+  &__title {
+    margin-bottom: 1.5rem;
+  }
+
+  &__text {
+    margin: 0 0 3rem;
+    font-weight: 300;
+    font-size: 2rem;
+    line-height: 150%;
+    color: var(--grey4);
+
+    @include mobile {
+      font-size: 1.8rem;
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    text-transform: lowercase;
   }
 }

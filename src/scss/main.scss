@@ -44,3 +44,11 @@
 @import "./components/ways";
 @import "./components/released";
 @import "./components/contacts";
+@import "./components/menu";
+@import "./components/nature";
+@import "./components/partners";
+@import "./components/customers";
+
+.modal-open {
+  overflow: hidden;
+}

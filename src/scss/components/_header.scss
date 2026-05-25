@@ -32,6 +32,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    z-index: 90;
   }
   &__nav {
     @include mobile {

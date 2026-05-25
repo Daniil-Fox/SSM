@@ -3,27 +3,35 @@ import { mountAccordions } from "./accordion.js";
 export class ServiceModal {
   constructor(modalElement) {
     this.modal = modalElement;
-
     this.content = this.modal.querySelector(".modal__body");
   }
-
   render(serviceData) {
     if (!serviceData) return;
-
     this.content.innerHTML = this._template(serviceData);
 
     // IMPORTANT
     // после вставки HTML
     // монтируем аккордеоны
 
-    mountAccordions(this.modal);
+    (0, _accordion_js__WEBPACK_IMPORTED_MODULE_0__.mountAccordions)(this.modal);
   }
-
   clear() {
     this.content.innerHTML = "";
   }
-
   _template(data) {
+    const assetsUrl =
+      typeof ssmTheme !== "undefined" && ssmTheme.assetsUrl
+        ? ssmTheme.assetsUrl
+        : "";
+    const stepsBlock = this._accordion(
+      "Этапы работ",
+      this._htmlList(data.steps, "ol"),
+    );
+    const problemsBlock = this._accordion(
+      "Закрываем типичные проблемы",
+      this._htmlList(data.problems, "ul"),
+    );
+    const cols = [stepsBlock, problemsBlock].filter(Boolean).join("");
     return `
       <div class="modal__header">
         <div class="modal__title h3">
@@ -35,7 +43,7 @@ export class ServiceModal {
           data-modal-close
         >
           <svg width="26" height="26">
-            <use xlink:href="img/sprite.svg#cross"></use>
+            <use xlink:href="${assetsUrl}img/sprite.svg#cross"></use>
           </svg>
         </button>
       </div>
@@ -45,16 +53,7 @@ export class ServiceModal {
           ${data.description}
         </div>
 
-        <div class="modal__cols">
-
-          ${this._accordion("Этапы работ", this._orderedList(data.steps))}
-
-          ${this._accordion(
-            "Закрываем типичные проблемы",
-            this._unorderedList(data.problems),
-          )}
-
-        </div>
+        ${cols ? `<div class="modal__cols">${cols}</div>` : ""}
       </div>
 
       <div class="modal__bottom">
@@ -67,8 +66,18 @@ export class ServiceModal {
       </div>
     `;
   }
-
+  _htmlList(content, listType = "ul") {
+    if (!content) return "";
+    if (typeof content === "string") return content.trim();
+    if (Array.isArray(content) && content.length) {
+      return listType === "ol"
+        ? this._orderedList(content)
+        : this._unorderedList(content);
+    }
+    return "";
+  }
   _accordion(title, content) {
+    if (!content) return "";
     return `
       <div class="modal__step accordeon">
 
@@ -87,7 +96,6 @@ export class ServiceModal {
       </div>
     `;
   }
-
   _orderedList(items = []) {
     return `
       <ol>
@@ -95,7 +103,6 @@ export class ServiceModal {
       </ol>
     `;
   }
-
   _unorderedList(items = []) {
     return `
       <ul>

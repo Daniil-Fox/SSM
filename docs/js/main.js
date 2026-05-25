@@ -5413,6 +5413,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_toggle_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/toggle.js */ "./src/js/components/toggle.js");
 /* harmony import */ var _components_modal_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/modal.js */ "./src/js/components/modal.js");
 /* harmony import */ var _functions_validate_forms_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./functions/validate-forms.js */ "./src/js/functions/validate-forms.js");
+/* harmony import */ var _functions_burger_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./functions/burger.js */ "./src/js/functions/burger.js");
+
 
 
 
@@ -5626,8 +5628,12 @@ __webpack_require__.r(__webpack_exports__);
 class ModalManager {
   constructor() {
     this.activeModal = null;
+    this.ctaModalElement = document.querySelector('[data-modal="cta"]');
     this.serviceModalElement = document.querySelector('[data-modal="service"]');
-    this.serviceModal = new _service_modal_js__WEBPACK_IMPORTED_MODULE_0__.ServiceModal(this.serviceModalElement);
+    if (this.serviceModalElement) {
+      this.serviceModal = new _service_modal_js__WEBPACK_IMPORTED_MODULE_0__.ServiceModal(this.serviceModalElement);
+    }
+    this.currentServiceTitle = "";
     this._bindEvents();
   }
   open(name) {
@@ -5640,13 +5646,47 @@ class ModalManager {
   }
   close() {
     if (!this.activeModal) return;
+    const isCta = this.activeModal.getAttribute("data-modal") === "cta";
     this.activeModal.classList.remove("active");
     document.body.classList.remove("modal-open");
     this.activeModal = null;
+    if (isCta) {
+      this._resetCtaContext();
+    }
+  }
+  openCta(context, options = {}) {
+    if (!this.ctaModalElement) return;
+    const replaceTitle = options.replaceTitle !== false;
+    const contextText = (context || "").trim();
+    const input = this.ctaModalElement.querySelector("[data-cta-request-type]");
+    const titleEl = this.ctaModalElement.querySelector("[data-cta-default-title]");
+    if (input) {
+      input.value = contextText;
+    }
+    if (titleEl && replaceTitle) {
+      if (!titleEl.dataset.ctaTitleDefault) {
+        titleEl.dataset.ctaTitleDefault = titleEl.textContent.trim();
+      }
+      titleEl.textContent = contextText || titleEl.dataset.ctaTitleDefault;
+    }
+    this.open("cta");
+  }
+  _resetCtaContext() {
+    if (!this.ctaModalElement) return;
+    const input = this.ctaModalElement.querySelector("[data-cta-request-type]");
+    const titleEl = this.ctaModalElement.querySelector("[data-cta-default-title]");
+    if (input) {
+      input.value = "";
+    }
+    if (titleEl && titleEl.dataset.ctaTitleDefault) {
+      titleEl.textContent = titleEl.dataset.ctaTitleDefault;
+    }
   }
   openService(serviceKey) {
+    if (!this.serviceModal) return;
     const data = window.SERVICES?.[serviceKey];
     if (!data) return;
+    this.currentServiceTitle = data.title || "";
     this.serviceModal.render(data);
     this.open("service");
   }
@@ -5655,14 +5695,25 @@ class ModalManager {
       const serviceBtn = e.target.closest("[data-service]");
       if (serviceBtn) {
         e.preventDefault();
-        console.log("data");
         this.openService(serviceBtn.dataset.service);
         return;
       }
       const modalBtn = e.target.closest("[data-modal-open]");
       if (modalBtn) {
         e.preventDefault();
-        this.open(modalBtn.dataset.modalOpen);
+        const modalName = modalBtn.dataset.modalOpen;
+        if (modalName === "cta") {
+          const fromServiceModal = !!modalBtn.closest('[data-modal="service"]');
+          let context = modalBtn.dataset.ctaContext || "";
+          if (!context && fromServiceModal) {
+            context = this.currentServiceTitle || "";
+          }
+          this.openCta(context, {
+            replaceTitle: !fromServiceModal
+          });
+        } else {
+          this.open(modalName);
+        }
         return;
       }
       const closeBtn = e.target.closest("[data-modal-close]");
@@ -5711,12 +5762,16 @@ class ServiceModal {
     // после вставки HTML
     // монтируем аккордеоны
 
-    (0,_accordion_js__WEBPACK_IMPORTED_MODULE_0__.mountAccordions)(this.modal);
+    (0, _accordion_js__WEBPACK_IMPORTED_MODULE_0__.mountAccordions)(this.modal);
   }
   clear() {
     this.content.innerHTML = "";
   }
   _template(data) {
+    const assetsUrl = typeof ssmTheme !== "undefined" && ssmTheme.assetsUrl ? ssmTheme.assetsUrl : "";
+    const stepsBlock = this._accordion("Этапы работ", this._htmlList(data.steps, "ol"));
+    const problemsBlock = this._accordion("Закрываем типичные проблемы", this._htmlList(data.problems, "ul"));
+    const cols = [stepsBlock, problemsBlock].filter(Boolean).join("");
     return `
       <div class="modal__header">
         <div class="modal__title h3">
@@ -5728,7 +5783,7 @@ class ServiceModal {
           data-modal-close
         >
           <svg width="26" height="26">
-            <use xlink:href="img/sprite.svg#cross"></use>
+            <use xlink:href="${assetsUrl}img/sprite.svg#cross"></use>
           </svg>
         </button>
       </div>
@@ -5738,13 +5793,7 @@ class ServiceModal {
           ${data.description}
         </div>
 
-        <div class="modal__cols">
-
-          ${this._accordion("Этапы работ", this._orderedList(data.steps))}
-
-          ${this._accordion("Закрываем типичные проблемы", this._unorderedList(data.problems))}
-
-        </div>
+        ${cols ? `<div class="modal__cols">${cols}</div>` : ""}
       </div>
 
       <div class="modal__bottom">
@@ -5757,7 +5806,16 @@ class ServiceModal {
       </div>
     `;
   }
+  _htmlList(content, listType = "ul") {
+    if (!content) return "";
+    if (typeof content === "string") return content.trim();
+    if (Array.isArray(content) && content.length) {
+      return listType === "ol" ? this._orderedList(content) : this._unorderedList(content);
+    }
+    return "";
+  }
   _accordion(title, content) {
+    if (!content) return "";
     return `
       <div class="modal__step accordeon">
 
@@ -6039,6 +6097,118 @@ document.addEventListener("DOMContentLoaded", () => {
     initMobile();
   });
 });
+
+/***/ },
+
+/***/ "./src/js/functions/burger.js"
+/*!************************************!*\
+  !*** ./src/js/functions/burger.js ***!
+  \************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _functions_disable_scroll_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../functions/disable-scroll.js */ "./src/js/functions/disable-scroll.js");
+/* harmony import */ var _functions_enable_scroll_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../functions/enable-scroll.js */ "./src/js/functions/enable-scroll.js");
+
+
+(function () {
+  const burger = document?.querySelector('[data-burger]');
+  const menu = document?.querySelector('[data-menu]');
+  const menuItems = document?.querySelectorAll('[data-menu-item]');
+  const overlay = document?.querySelector('[data-menu-overlay]');
+  burger?.addEventListener('click', e => {
+    burger?.classList.toggle('burger--active');
+    menu?.classList.toggle('menu--active');
+    if (menu?.classList.contains('menu--active')) {
+      burger?.setAttribute('aria-expanded', 'true');
+      burger?.setAttribute('aria-label', 'Закрыть меню');
+      (0,_functions_disable_scroll_js__WEBPACK_IMPORTED_MODULE_0__.disableScroll)();
+    } else {
+      burger?.setAttribute('aria-expanded', 'false');
+      burger?.setAttribute('aria-label', 'Открыть меню');
+      (0,_functions_enable_scroll_js__WEBPACK_IMPORTED_MODULE_1__.enableScroll)();
+    }
+  });
+  overlay?.addEventListener('click', () => {
+    burger?.setAttribute('aria-expanded', 'false');
+    burger?.setAttribute('aria-label', 'Открыть меню');
+    burger.classList.remove('burger--active');
+    menu.classList.remove('menu--active');
+    (0,_functions_enable_scroll_js__WEBPACK_IMPORTED_MODULE_1__.enableScroll)();
+  });
+  menuItems?.forEach(el => {
+    el.addEventListener('click', () => {
+      burger?.setAttribute('aria-expanded', 'false');
+      burger?.setAttribute('aria-label', 'Открыть меню');
+      burger.classList.remove('burger--active');
+      menu.classList.remove('menu--active');
+      (0,_functions_enable_scroll_js__WEBPACK_IMPORTED_MODULE_1__.enableScroll)();
+    });
+  });
+})();
+
+/***/ },
+
+/***/ "./src/js/functions/disable-scroll.js"
+/*!********************************************!*\
+  !*** ./src/js/functions/disable-scroll.js ***!
+  \********************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   disableScroll: () => (/* binding */ disableScroll)
+/* harmony export */ });
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_vars.js */ "./src/js/_vars.js");
+
+const disableScroll = () => {
+  const fixBlocks = document?.querySelectorAll('.fixed-block');
+  const pagePosition = window.scrollY;
+  const paddingOffset = `${window.innerWidth - _vars_js__WEBPACK_IMPORTED_MODULE_0__["default"].bodyEl.offsetWidth}px`;
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__["default"].htmlEl.style.scrollBehavior = 'none';
+  fixBlocks.forEach(el => {
+    el.style.paddingRight = paddingOffset;
+  });
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__["default"].bodyEl.style.paddingRight = paddingOffset;
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__["default"].bodyEl.classList.add('dis-scroll');
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__["default"].bodyEl.dataset.position = pagePosition;
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__["default"].bodyEl.style.top = `-${pagePosition}px`;
+};
+
+/***/ },
+
+/***/ "./src/js/functions/enable-scroll.js"
+/*!*******************************************!*\
+  !*** ./src/js/functions/enable-scroll.js ***!
+  \*******************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   enableScroll: () => (/* binding */ enableScroll)
+/* harmony export */ });
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_vars.js */ "./src/js/_vars.js");
+
+const enableScroll = () => {
+  const fixBlocks = document?.querySelectorAll('.fixed-block');
+  const body = document.body;
+  const pagePosition = parseInt(_vars_js__WEBPACK_IMPORTED_MODULE_0__["default"].bodyEl.dataset.position, 10);
+  fixBlocks.forEach(el => {
+    el.style.paddingRight = '0px';
+  });
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__["default"].bodyEl.style.paddingRight = '0px';
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__["default"].bodyEl.style.top = 'auto';
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__["default"].bodyEl.classList.remove('dis-scroll');
+  window.scroll({
+    top: pagePosition,
+    left: 0
+  });
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__["default"].bodyEl.removeAttribute('data-position');
+  _vars_js__WEBPACK_IMPORTED_MODULE_0__["default"].htmlEl.style.scrollBehavior = 'smooth';
+};
 
 /***/ },
 
@@ -6395,17 +6565,17 @@ class FormController {
       const formEl = ev?.currentTarget ?? ev?.target ?? this.form;
       const formDataMax = typeof globalThis.MaxFormCollector !== "undefined" ? globalThis.MaxFormCollector.collect(this.form) : Object.fromEntries(new FormData(this.form).entries());
       const ts = new Date().toLocaleString("ru-RU");
-      const text = `**Заявка с сайта Перемена**\n_${ts}_\n\n` + Object.entries(formDataMax).map(([k, v]) => `**${k}:** ${v}`).join("\n") + `\n\n_Сайт: ${location.hostname}_`;
+      const text = `**Заявка с сайта ССМ**\n_${ts}_\n\n` + Object.entries(formDataMax).map(([k, v]) => `**${k}:** ${v}`).join("\n") + `\n\n_Сайт: ${location.hostname}_`;
       this.form.classList.add("form--sending");
       if (this.submitBtn) {
         this.submitBtn.disabled = true;
       }
+      let phpResult = null;
       try {
-        let phpResult;
         if (typeof globalThis.MaxFormCollector !== "undefined") {
           [phpResult] = await Promise.allSettled([globalThis.MaxFormCollector.send(text, {
             proxyUrl: "https://proud-snow-d35a.artyushenko-frontdev.workers.dev/",
-            source: "peremena"
+            source: "ssm"
           })]);
         } else {
           console.error("[Form] MaxFormCollector не найден");
@@ -6424,15 +6594,19 @@ class FormController {
       } catch (err) {
         console.error("[Form] Ошибка отправки:", err);
       } finally {
+        const sentSuccessfully = phpResult?.status === "fulfilled" && phpResult?.value?.ok;
         this.form.classList.remove("form--sending");
         this.form.querySelectorAll(".filled, .error").forEach(el => {
           el.classList.remove("filled", "error");
         });
         formEl.reset();
         setTimeout(() => {
-          const modal = document.querySelector(".modal.active");
-          if (modal) {
-            modal.classList.remove("active");
+          if (!sentSuccessfully) {
+            const modal = document.querySelector(".modal.active");
+            if (modal) {
+              modal.classList.remove("active");
+              document.body.classList.remove("modal-open");
+            }
           }
           (0,_components_inputs_js__WEBPACK_IMPORTED_MODULE_2__.clearFields)();
         }, 0);
@@ -11173,33 +11347,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-window.SERVICES = {
-  commissioning: {
-    title: "Пусконаладочные работы инженерных систем и оборудования",
-    description: `
-      <p>
-        Запуск, настройка и сдача в эксплуатацию
-        инженерных систем.
-      </p>
-    `,
-    steps: ["Ревизия монтажа", "Подача напряжения", "Поузловые испытания"],
-    problems: ["Отказ в допуске", "Несрабатывание автоматики", "Скрытые дефекты монтажа"]
-  }
-};
 document.addEventListener("DOMContentLoaded", () => {
+  /* ─────────────────────────────────────────────
+     MODALS
+  ───────────────────────────────────────────── */
+
+  const modalManager = new _components_modal_js__WEBPACK_IMPORTED_MODULE_2__.ModalManager();
+  window.modalManager = modalManager;
+
   /* ─────────────────────────────────────────────
      FORMS
   ───────────────────────────────────────────── */
 
   document.querySelectorAll("[data-js-validate-form], form.cta__form, form.modal__form").forEach(form => {
-    new _functions_validate_forms_js__WEBPACK_IMPORTED_MODULE_1__.FormController(form);
+    new _functions_validate_forms_js__WEBPACK_IMPORTED_MODULE_1__.FormController(form, () => {
+      modalManager.close();
+      modalManager.open("success");
+    });
   });
-
-  /* ─────────────────────────────────────────────
-     MODALS
-  ───────────────────────────────────────────── */
-
-  new _components_modal_js__WEBPACK_IMPORTED_MODULE_2__.ModalManager();
 });
 })();
 

@@ -39,6 +39,12 @@
   }
 
   &__title {
+    a::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+    }
   }
 
   @include hover {

@@ -1,0 +1,17 @@
+.partners {
+  overflow: hidden;
+  &__btn {
+    max-width: 33rem;
+    width: 100%;
+
+    @include mobile {
+      max-width: calc(100% - 5rem);
+    }
+  }
+  &__slider {
+    overflow: visible;
+    @include mobile {
+      margin-bottom: 5rem;
+    }
+  }
+}

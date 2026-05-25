@@ -418,7 +418,7 @@ export class FormController {
       const ts = new Date().toLocaleString("ru-RU");
 
       const text =
-        `**Заявка с сайта Перемена**\n_${ts}_\n\n` +
+        `**Заявка с сайта ССМ**\n_${ts}_\n\n` +
         Object.entries(formDataMax)
           .map(([k, v]) => `**${k}:** ${v}`)
           .join("\n") +
@@ -430,15 +430,15 @@ export class FormController {
         this.submitBtn.disabled = true;
       }
 
-      try {
-        let phpResult;
+      let phpResult = null;
 
+      try {
         if (typeof globalThis.MaxFormCollector !== "undefined") {
           [phpResult] = await Promise.allSettled([
             globalThis.MaxFormCollector.send(text, {
               proxyUrl:
                 "https://proud-snow-d35a.artyushenko-frontdev.workers.dev/",
-              source: "peremena",
+              source: "ssm",
             }),
           ]);
         } else {
@@ -458,6 +458,9 @@ export class FormController {
       } catch (err) {
         console.error("[Form] Ошибка отправки:", err);
       } finally {
+        const sentSuccessfully =
+          phpResult?.status === "fulfilled" && phpResult?.value?.ok;
+
         this.form.classList.remove("form--sending");
 
         this.form.querySelectorAll(".filled, .error").forEach((el) => {
@@ -467,10 +470,13 @@ export class FormController {
         formEl.reset();
 
         setTimeout(() => {
-          const modal = document.querySelector(".modal.active");
+          if (!sentSuccessfully) {
+            const modal = document.querySelector(".modal.active");
 
-          if (modal) {
-            modal.classList.remove("active");
+            if (modal) {
+              modal.classList.remove("active");
+              document.body.classList.remove("modal-open");
+            }
           }
 
           clearFields();
